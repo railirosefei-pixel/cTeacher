@@ -1,2 +1,48 @@
 2026-09-18: Corrected Tailwind CSS source paths, connected the Vite JavaScript entrypoint, and fixed ESM-compatible index.html resolution in vite.config.js.
 2026-09-18: Added npm run verify to execute the Tailwind and Vite production build checks together.
+2026-09-19 06:58:00: Implemented the full-screen dark-themed homepage in app.vue with a left sidebar, three stacked navigation buttons for Adult, Child, and Settings, and a content panel designed for easy future expansion. Fixed the Vue entrypoint path in src/js/main.js and updated index.html to mount the app correctly with the proper script entry. Verified the build succeeded with npm run build.
+2026-09-19 01:33:27 (plan step 1 — One app shell): Restructured the app into a single-shell architecture. Created src/App.vue (owns global layout wrapper, currentView state, top-level navigation and page switching only), src/components/SidebarNav.vue (left-rail nav, emits navigate), src/components/MainPanel.vue (shared content panel chrome via slot), src/components/AdultMenu.vue (Adult sub-menu, presentational), src/views/HomeView.vue and src/views/AdultView.vue (view content; AdultView emits back). Updated src/js/main.js to import App from ../App.vue. Removed root app.vue after its logic was migrated into src/App.vue (removal explicitly approved). Verified with npm run build.
+---
+Date: 2026-09-19
+Time: 01:44:30
+Summary: Read rules\copilot-rules.md and plan.md (verified LastWriteTime). Audited existing structure against plan: one CSS entry (src/css/input.css), one bootstrap (src/js/main.js), one mount point (index.html #app), single layout state in src/App.vue. No edits required � structure already conforms. Ran npm run build: success, 22 modules transformed, no errors or warnings.
+
+---
+Date: 2026-09-19
+Time: 01:47:04
+Summary: Updated index.html: removed duplicate body page-shell Tailwind classes. App.vue is now the sole owner of shell min-height, background, and text-color layout styling. Validation: npm run build passed with no errors or warnings.
+
+2026-09-19 01:49:37: Updated plan.md to reference the actual file paths and casing: src/App.vue, src/js/main.js, and src/css/input.css. Validation: npm run build passed with no errors.
+
+2026-09-19 01:53:10: Replaced label-based top-level navigation with stable view IDs and a centralized view registry in src/App.vue. Updated src/components/SidebarNav.vue to emit item IDs. Child and Settings now render explicit placeholder states instead of silently doing nothing. Validation: npm run build passed with 22 modules transformed.
+
+2026-09-19 01:54:28: Updated src/js/main.js to mount Vue with the already-resolved vueRoot element instead of querying #app a second time. Validation: npm run build passed with no errors.
+
+2026-09-19 01:55:10: Added runtime prop validators to src/components/SidebarNav.vue and src/components/AdultMenu.vue for their required menu item fields. Validation: npm run build passed with no Vue compiler errors or warnings.
+
+2026-09-19 01:56:27: Added stable IDs to the Adult submenu items in src/views/AdultView.vue and updated src/components/AdultMenu.vue to validate and use those IDs for list keys. Validation: npm run build passed with no errors.
+
+2026-09-19 02:03:44: Added an ESLint script and a combined npm run verify workflow to package.json, including ESLint as a development dependency. The workflow runs lint checks on src/js/main.js and vite.config.js before npm run build. Validation: npm run verify passed; lint passed and the production build transformed 22 modules with no warnings or errors.
+2026-09-19 01:57:52: Removed the nonfunctional Explore and Quick View buttons and their related markup from src/views/HomeView.vue. Preserved the Child and Settings navigation buttons. Validation pending.
+2026-09-19 02:05:00: Removed the redundant custom Rollup input from vite.config.js so Vite uses the default single-page app entry. This keeps the config aligned with the project structure and reduces maintenance overhead. Validation: npm run verify passed.
+
+2026-09-19 14:05:00: Simplified the static adult submenu configuration in src/views/AdultView.vue by switching it from a ref to a plain constant, matching the actual non-mutating usage and reducing unnecessary reactivity. Validation: npm run build passed.
+
+2026-09-19 14:18:00: Removed dead/commented-out sections flagged by SonarQube in the Vue components and Tailwind entry stylesheet, including empty scoped-style comment blocks and the unused CSS documentation comment. Kept the required JSDoc comments intact. Validation: npm run verify passed.
+
+2026-09-19 18:30:00: Shifted the top-level app layout in src/App.vue to the left edge by removing the centered max-width wrapper and keeping the shell flush-start aligned. This places the Adult, Child, and Settings navigation container against the left side of the screen as specified in plan step 1. Validation: npm run build passed.
+2026-09-19 08:49:38 -07:00: Completed plan step 1 by filling every existing Function entry in names/cmb with a short, plain-language description tied to its listed container, button, or menu. No new files or directories were created.
+2026-09-19 08:50:00 -07:00: Validation completed: npm run verify passed; Playwright confirmed the home page and Adult learning dashboard navigation; SonarQube analysis was triggered for names/cmb.
+2026-09-19 05:19:28: Initialized cCurriculum(Adults) from chapterList.txt, creating 559 sanitized chapter, subchapter, and heading directories sequentially in source order. Directory creation completed with zero errors.
+[2026-09-19 05:26:49] Scope: chapters 1-12; Chapters 1-12; chapter names: collapse whitespace to underscores and remove [\\/\?%\*:|"<>]; uppercase subchapter names: collapse spaces, title-case each word, join with underscores, remove invalid characters; lowercase heading names: trim, collapse whitespace to underscores, remove invalid characters; verify each expected path as a directory with Test-Path. Expected count: 199; Missing count: 199.
+[2026-09-19 05:28:23] Repair summary: constructed missing dotted-name directories for chapters 1-12 sequentially while preserving existing content. Final verification counts: Expected count: 199; Created count: 199; Missing count: 0.
+[2026-09-19 07:00:00 -07:00] Executed the current plan.md directory map. Verified or created all 284 target directories whose names are valid on Windows. The remaining 142 mapped targets contain Windows-reserved characters and could not be created literally. No files were created or modified.
+[2026-09-19 07:00:00 -07:00] Normalized the 142 Windows-invalid plan targets by removing spaces and Windows-reserved filename characters, and concatenating the split filename segments. All 426 normalized targets now exist; 146 directories were newly created, including required intermediate parents. No existing directories were removed or renamed.
+[2026-09-19 06:19:35 -07:00] Completed plan step 1 by adding stable, descriptive IDs to every structural container in src/App.vue, src/components/SidebarNav.vue, src/components/MainPanel.vue, src/components/AdultMenu.vue, src/views/HomeView.vue, and src/views/AdultView.vue. Validation: npm run verify passed; Playwright confirmed home and Adult container IDs; SonarQube analysis triggered for all six changed Vue files.
+[2026-09-19 06:29:47 -07:00] Completed plan steps 1 and 2 by creating the names directory and the empty text files containers, menus, buttons, and assets inside it. Validation pending.
+[2026-09-19 06:29:47 -07:00] Validation completed: npm run verify passed with lint and build; names contains exactly containers, menus, buttons, and assets. Playwright and SonarQube checks were unavailable because neither is installed or configured in this workspace.2026-09-19 22:00:00 -07:00: Updated the Adult menu to rename Reports to Global Reports, add a C99 button directly beneath Support, and open a left-aligned C99 floating panel with placeholder navigation for Lessons, Progress, Reports, and Games. Created the C99 placeholder pages and linked them to the panel. Ran Prettier and npm run verify; lint passed and the production build succeeded with 20 modules transformed.
+
+2026-09-19 23:15:00 -07:00: Added a consistent active-glow state to the three home navigation buttons in src/components/SidebarNav.vue and passed the current selection from src/App.vue so each button keeps its own purple/blue, teal/green, or orange/red edge glow until a different button is selected. Validation: npm run verify passed.
+2026-09-19 10:43:26: Removed the inactive button opacity-0 fallback from src/components/SidebarNav.vue so all three navigation options remain visible with neutral styling while the active button retains its glow and selected border. App.vue selection logic was unchanged. Validation pending: npm run verify.
+2026-09-19 10:44:06: Validation completed for the SidebarNav.vue adjustment: npm run verify passed with clean ESLint and a successful production build; Playwright confirmed all three buttons remain visible and only the selected button receives active styling; SonarQube analysis was triggered for the touched component.
+2026-09-19 10:46:47 -07:00: Executed plan step 1 by running Prettier across the workspace. Validation completed with clean ESLint, a successful Vite production build, a successful browser smoke check at http://127.0.0.1:5173/, and SonarQube analysis triggered for the touched source files.

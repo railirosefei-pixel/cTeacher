@@ -1,0 +1,368 @@
+1. Page: "HomeView"
+
+    A. Containers: 
+
+        a. app-shell
+
+            aa. Defined In: "App.vue" Line(s): 68
+
+            ab. Rendered In: "App.vue" Line(s): 68 - 87
+
+            ac. Function: Holds the whole app page and keeps the main background in place.
+        
+        b. app-frame
+
+            aa. Defined In: "App.vue" Line(s): 69
+
+            ab. Rendered In: "App.vue" Line(s): 69 - 70
+
+            ac. Function: Holds the sidebar and the main content area next to each other.
+
+        c. app-layout
+
+            aa. Defined In: "App.vue" Line(s): 70
+
+            ab. Rendered In: "App.vue" Line(s): 70 - 76
+
+            ac. Function: Sets the side-by-side layout for the app's navigation and content.
+
+        d. primary-sidebar
+
+            aa. Defined In: "SidebarNav.vue" Line(s): 40
+
+            ab. Rendered In: "SidebarNav.vue" Line(s): 40 - 64
+
+            ac. Function: Holds the main buttons for moving to Adult, Child, or Settings.
+
+        e. sidebar-brand
+
+            aa. Defined In: "SidebarNav.vue" Line(s): 41
+
+            ab. Rendered In: "SidebarNav.vue" Line(s):  41 - 49
+
+            ac. Function: Groups the logo and app name at the top of the sidebar.
+
+        f. brand-mark
+
+            aa. Defined In: "SidebarNav.vue" Line(s): 42
+
+            ab. Rendered In: "SidebarNav.vue" Line(s): 42 - 44
+
+            ac. Function: Shows the letter C as the app's small logo.
+
+        g. brand-copy
+
+            aa. Defined In: "SidebarNav.vue" Line(s): 45
+
+            ab. Rendered In: "SidebarNav.vue" Line(s): 45 - 48
+
+            ac. Function: Shows the app label and the name cTeacher.
+
+        h. content-panel (Shared Between All Pages)
+
+            aa. Defined In: "MainPanel.vue" Line(s): 10
+
+            ab. Rendered In: "MainPanel.vue" Line(s): 8 - 10
+
+            ac. Function: Gives each page one shared area for its main content.
+
+        i. home-view
+
+            aa. Defined In: "HomeView.vue" Line(s): 10
+
+            ab. Rendered In: "HomeView.vue" Line(s): 9 - 18
+
+            ac. Function: Holds the home page's dashboard label, heading, and message.
+
+    B. Buttons: 
+
+        a. Adult: 
+
+            aa. Defined In: "App.vue" Line(s): 36
+
+            ab. Rendered In: "SidebarNav.vue" Line(s): 50 - 58
+
+            ac. Function: Takes the user to the Adult learning area.
+
+        b. Child: 
+
+            aa. Defined In: "App.vue" Line(s): 37
+
+            ab. Rendered In: "SidebarNav.vue" Line(s): 50 - 58
+
+            ac. Function: Takes the user to the Child area, which is not ready yet.
+
+        C. Settings: 
+
+            aa. Defined In: "App.vue" Line(s): 38
+
+            ab. Rendered In: "SidebarNav.vue" Line(s): 50 - 58
+
+            ac. Function: Takes the user to the Settings area, which is not ready yet.
+
+    C. Menus:
+
+        a. primary-navigation
+
+            aa. Defined In: "SidebarNav.vue" Line(s): 35 - 56
+
+            ab. Rendered In: "SidebarNav.vue" Line(s): 49
+
+            ac. Function: Lists the main page buttons in the sidebar.
+
+2. Page: "AdultView"
+
+    A. Containers: 
+
+        a. content-panel: (Share Between All Pages)
+
+            aa. Defined In: "MainPanel.vue" Line(s): 10
+
+            ab. Rendered In: "MainPanel.vue" Line(s): 10
+
+            ac. Function: Holds all of the Adult page content inside one section.
+
+        b. adult-view: 
+
+            aa. Defined In: "AdultView.vue" Line(s): 25
+
+            ab. Rendered In: "AdultView.vue" Line(s): 25
+
+            ac. Function: Places the Adult menu beside the learning dashboard.
+
+        c. adult-view-layout:
+
+            aa. Defined In: "AdultView.vue" Line(s): 35
+
+            ab. Rendered In: "AdultView.vue" Line(s): 35
+
+            ac. Function: Holds the Adult page's smaller navigation menu.
+
+        d. adult-navigation: 
+
+            aa. Defined In:  "AdultMenu.vue" Line(s): 28 
+
+            ab. Rendered In: "AdultMenu.vue" Line(s): 28 
+
+            ac. Function: Shows the menu title and the Adult label.
+
+        e. adult-navigation-header: 
+
+            aa. Defined In: "AdultMenu.vue" Line(s): 29
+
+            ab. Rendered In: "AdultMenu.vue" Line(s): 29
+
+            ac. Function: Holds the buttons for Overview, Programs, Reports, and Support.
+
+        f. adult-navigation-items: 
+
+            aa. Defined In: "AdultMenu.vue" Line(s): 34
+
+            ab. Rendered In: "AdultMenu.vue" Line(s): 34
+
+            ac. Function: Holds the Adult learning information and its numbers.
+
+        g. learning-dashboard:
+
+            aa. Defined In: "AdultView.vue" Line(s): 38 
+
+            ab. Rendered In: "AdultView.vue" Line(s): 38
+
+            ac. Function: Shows the dashboard name and its current status.
+
+        h. dashboard-header:
+
+            aa. Defined In: "AdultView.vue" Line(s): 39
+
+            ab. Rendered In: "AdultView.vue" Line(s): 39
+
+            ac. Function: Shows the small Adult portal label and the dashboard title.
+
+        i. dashboard_heading:
+
+            aa. Defined In: "AdultView.vue" Line(s): 40
+
+            ab. Rendered In: "AdultView.vue" Line(s): 40
+
+            ac. Function: Arranges the three learning number boxes in a row or grid.
+
+        j. dashboard-metrics:
+
+            aa. Defined In: "AdultView.vue" Line(s): 48 
+
+            ab. Rendered In: "AdultView.vue" Line(s): 48 
+
+            ac. Function: Shows how many learning sessions have been completed.
+
+        k. sessions-metric:
+
+            aa. Defined In: "AdultView.vue" Line(s): 49
+
+            ab. Rendered In: "AdultView.vue" Line(s): 49
+
+            ac. Function: Shows the learner's current progress percentage.
+
+        l. progress-metric:
+
+            aa. Defined In: "AdultView.vue" Line(s): 53
+
+            ab. Rendered In: "AdultView.vue" Line(s): 53
+
+            ac. Function: 
+
+        m. next-review-metric:
+
+            aa. Defined In: "AdultView.vue" Line(s): 57
+
+            ab. Rendered In: "AdultView.vue" Line(s): 57
+
+            ab. Function: Shows when the learner should review the material next.
+
+    B. Buttons: 
+
+        a. Overview: 
+
+            aa. Defined In: "AdultView.vue" Line(s): 14
+
+            ab. Rendered In: "AdultMenu.vue" Line(s): 36
+
+            ac. Function: Opens the main Adult overview screen.
+
+        b. Programs: 
+
+            aa. Defined In: "AdultView.vue" Line(s): 15
+
+            ab. Rendered In: "AdultMenu.vue" Line(s): 36
+
+            ac. Function: Opens the list of Adult learning programs.
+
+        c. Reports: 
+
+            aa. Defined In: "AduleView.vue" Line(s): 16
+
+            ab. Rendered In: "AdultMenu.vue" Line(s): 36
+
+            ac. Function: Opens Adult learning reports.
+
+        d. Support: 
+
+            aa. Defined In: "AduleView.vue" Line(s): 17
+
+            ab. Rendered In: "AdultMenu.vue" Line(s): 36
+
+            ac. Function: Opens help and information for the Adult area.
+
+        e. Back: 
+
+            aa. Button Tag: "AdultView.vue" Line(s): 28
+
+            ab. Label Text: "AdultView.vue" Line(s): 
+
+            ac. Function: Sends the user back to the home page.
+
+3. Page: "Child"
+    A. Containers:
+    B. Buttons:
+    C. Menus:
+
+4. Page: "Settings"
+    A. Containers:
+    B. Buttons:
+    C. Menus:
+
+5. Page: "C99View"
+
+    A. Containers:
+
+        a. c99-view
+
+            aa. Defined In: "C99View.vue" Line(s): 31
+
+            ab. Rendered In: "C99View.vue" Line(s): 31 - 62
+
+            ac. Function: Displays the floating C99 panel with a left-aligned navigation menu for C99 learning sections.
+
+        b. c99-view-layout
+
+            aa. Defined In: "C99View.vue" Line(s): 42
+
+            ab. Rendered In: "C99View.vue" Line(s): 42 - 62
+
+            ac. Function: Aligns the C99 navigation list and the active placeholder content panel side by side.
+
+        c. c99-navigation
+
+            aa. Defined In: "C99View.vue" Line(s): 43
+
+            ab. Rendered In: "C99View.vue" Line(s): 43 - 61
+
+            ac. Function: Lets the learner move between Lessons, Progress, Reports, and Games inside the C99 page.
+
+        d. c99-page-panel
+
+            aa. Defined In: "C99View.vue" Line(s): 62
+
+            ab. Rendered In: "C99View.vue" Line(s): 62 - 64
+
+            ac. Function: Holds the selected C99 placeholder page content.
+
+    B. Buttons:
+
+        a. C99:
+
+            aa. Defined In: "AdultView.vue" Line(s): 21
+
+            ab. Rendered In: "AdultMenu.vue" Line(s): 36
+
+            ac. Function: Opens the C99 learning hub from the Adult menu.
+
+        b. Close:
+
+            aa. Defined In: "C99View.vue" Line(s): 36
+
+            ab. Rendered In: "C99View.vue" Line(s): 36 - 41
+
+            ac. Function: Closes the floating C99 panel.
+
+        c. Lessons:
+
+            aa. Defined In: "C99View.vue" Line(s): 45
+
+            ab. Rendered In: "C99View.vue" Line(s): 45 - 61
+
+            ac. Function: Switches the C99 panel to the placeholder Lessons page.
+
+        d. Progress:
+
+            aa. Defined In: "C99View.vue" Line(s): 45
+
+            ab. Rendered In: "C99View.vue" Line(s): 45 - 61
+
+            ac. Function: Switches the C99 panel to the placeholder Progress page.
+
+        e. Reports:
+
+            aa. Defined In: "C99View.vue" Line(s): 45
+
+            ab. Rendered In: "C99View.vue" Line(s): 45 - 61
+
+            ac. Function: Switches the C99 panel to the placeholder Reports page.
+
+        f. Games:
+
+            aa. Defined In: "C99View.vue" Line(s): 45
+
+            ab. Rendered In: "C99View.vue" Line(s): 45 - 61
+
+            ac. Function: Switches the C99 panel to the placeholder Games page.
+
+    C. Menus:
+
+        a. c99-navigation
+
+            aa. Defined In: "C99View.vue" Line(s): 43
+
+            ab. Rendered In: "C99View.vue" Line(s): 43 - 61
+
+            ac. Function: Lists the four starter C99 pages with a left-aligned menu layout.
+

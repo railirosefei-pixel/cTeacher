@@ -1,1 +1,97 @@
 2026-09-18: `npm run build` could not run because `vite` was not recognized; dependencies are not installed in the workspace.
+2026-09-19 06:51:12:
+npm error code ERESOLVE
+npm error ERESOLVE could not resolve
+npm error
+npm error While resolving: @vitejs/plugin-vue@5.2.4
+npm error Found: vite@8.3.0
+npm error node_modules/vite
+npm error   dev vite@"^8.3.0" from the root project
+npm error   peer vite@"^5.2.0 || ^6 || ^7 || ^8" from @tailwindcss/vite@4.3.3
+npm error   node_modules/@tailwindcss/vite
+npm error     dev @tailwindcss/vite@"^4.0.0-alpha.1" from the root project
+npm error
+npm error Could not resolve dependency:
+npm error peer vite@"^5.0.0 || ^6.0.0" from @vitejs/plugin-vue@5.2.4
+npm error node_modules/@vitejs/plugin-vue
+npm error   dev @vitejs/plugin-vue@"^5.1.4" from the root project
+npm error
+npm error Conflicting peer dependency: vite@6.4.3
+npm error node_modules/vite
+npm error   peer vite@"^5.0.0 || ^6.0.0" from @vitejs/plugin-vue@5.2.4
+npm error
+npm error Command exited with code 1
+2026-09-19 13:18:55:
+Dependency resolution issue caused by incompatible Vite major versions. The workspace was using Vite ^8.3.0 while @vitejs/plugin-vue ^5.2.4 requires Vite ^5 or ^6. The issue was corrected by aligning the project to Vite ^6.4.0 so the build environment matches the plugin constraints.
+2026-09-19 13:25:00:
+App bootstrap runtime issue: src/js/main.js imported ../../App.vue while the actual file in the project is app.vue in lowercase. This mismatch prevented Vue from mounting the app and caused the page to fail to load; the import was corrected to match the actual component filename.
+
+2026-09-19 02:03:44:
+Install: Succeeded — 85 packages added, 0 vulnerabilities. esbuild install script was blocked.
+2026-09-19 01:58:54:
+npm error Missing script: "lint"
+npm error
+npm error Did you mean this?
+npm error   npm link # Symlink a package folder
+npm error
+npm error To see a list of scripts, run:
+npm error   npm run
+npm error A complete log of this run can be found in: C:\Users\jason\AppData\Local\npm-cache\_logs\2026-09-19T08_58_54_843Z-debug-0.log
+2026-09-19 05:20:00:
+Playwright smoke check flag: {"initial":true,"adult":false,"url":"http://127.0.0.1:4173/"}
+Code execution failed: Page "09d26a0a-ac18-404a-83cf-6945b17cba17" not found[2026-09-19 05:28:23] Expected count: 199; Missing count: 199.
+[2026-09-19 05:28:23] Cause: the initial construction pass used legacy non-dotted names.
+[2026-09-19 05:28:41 -07:00] npm run verify output:
+node.exe : npm notice run vite-tailwind4-framework@1.0.0 verify
+At line:1 char:1
++ & "C:\Program Files\nodejs/node.exe" "C:\Users\jason\AppData\Roaming\ ...
++ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (npm notice run ...rk@1.0.0 verify 
+   :String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+ 
+npm notice run npm run lint && npm run build
+npm notice run vite-tailwind4-framework@1.0.0 lint
+npm notice run eslint src/js/main.js vite.config.js --no-config-lookup 
+--global document --rule "no-undef:error" --rule "no-unused-vars:error"
+npm notice run vite-tailwind4-framework@1.0.0 build
+npm notice run vite build
+[36mvite v6.4.3 [32mbuilding for production...[36m[39m
+transforming...
+[32mG��[39m 15 modules transformed.
+rendering chunks...
+computing gzip size...
+[2mdist/[22m[32mindex.html                 [39m[1m[2m 0.38 kB[22m[1m[22m[2m G�� gzip:  0.27 kB[22m
+[2mdist/[22m[35massets/index-CpeaquRP.css  [39m[1m[2m33.81 kB[22m[1m[22m[2m G�� gzip:  5.86 kB[22m
+[2mdist/[22m[36massets/index-BsRe5qOy.js   [39m[1m[2m72.44 kB[22m[1m[22m[2m G�� gzip: 28.22 kB[22m
+[32mG�� built in 442ms[39m
+
+[2026-09-19 05:29:25 -07:00] The workspace folder is not bound to a remote project on SonarQube (Cloud, Server).
+SonarQube for IDE needs to be in Connected Mode to retrieve the detected Security Hotspots.I have initiated the binding process for you.
+[2026-09-19 07:00:00 -07:00] Total targets: 426
+2026-09-19 06:19:35 -07:00:
+SyntaxError: Unexpected identifier 'page' Page Title: cTeacher
+URL: http://127.0.0.1:5173/
+Missing: 142 (130 invalid on Windows; 12 otherwise valid but missing).
+[2026-09-19 07:00:00 -07:00] No directories created; 284 valid paths already existed, 0 missing, 142 invalid/skipped.
+locator.waitFor: Timeout 10000ms exceeded
+Call log:
+    - waiting for getByRole('heading', { name: 'Adult Curriculum' }) to be visible
+locator.textContent: Timeout 10000ms exceeded
+Call log:
+    - waiting for getByRole('heading', { name: 'Learning dashboard' })
+[2026-09-19 07:00:00 -07:00] locator.click: Timeout 10000ms exceeded
+Call log:
+    - waiting for element to be visible, enabled and stable
+Recent events:
+- [2026-09-19T12:49:33.730Z] (console) [error] WebSocket connection to 'ws://127.0.0.1:5173/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
+[2026-09-19 06:29:47 -07:00] Tool error:
+ERROR: Your input to the tool was invalid (must have required property 'explanation')
+Please check your input and try again.
+[2026-09-19 06:29:47 -07:00] Validation flag:
+PowerShell reported `NativeCommandError` for npm notice output; no actual verification errors.
+[2026-09-19 06:29:47 -07:00] Playwright: Not present in `node_modules`; no package script references it.
+[2026-09-19 06:29:47 -07:00] SonarQube: `sonar-scanner` unavailable; no configuration found.
+[2026-09-19 08:50:00 -07:00] SonarQube output (workspace connection limitation):
+The workspace folder is not bound to a remote project on SonarQube (Cloud, Server).
+SonarQube for IDE needs to be in Connected Mode to retrieve the detected Security Hotspots.I have initiated the binding process for you.
