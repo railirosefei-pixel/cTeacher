@@ -1,0 +1,1 @@
+2026-09-18: `npm run build` could not run because `vite` was not recognized; dependencies are not installed in the workspace.

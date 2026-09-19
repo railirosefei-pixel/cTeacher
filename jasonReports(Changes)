@@ -1,0 +1,2 @@
+2026-09-18: Corrected Tailwind CSS source paths, connected the Vite JavaScript entrypoint, and fixed ESM-compatible index.html resolution in vite.config.js.
+2026-09-18: Added npm run verify to execute the Tailwind and Vite production build checks together.
