@@ -218,6 +218,48 @@
 
             ab. Function: Shows when the learner should review the material next.
 
+    D. Placeholder Panels:
+
+        a. overview-panel
+
+            aa. Defined In: "AdultView.vue"
+
+            ab. Rendered In: "AdultView.vue"
+
+            ac. Function: Shows the purple-gradient Adult overview placeholder.
+
+        b. programs-panel
+
+            aa. Defined In: "AdultView.vue"
+
+            ab. Rendered In: "AdultView.vue"
+
+            ac. Function: Shows the bluish-green-to-greenish-blue Programs placeholder.
+
+        c. global-reports-panel
+
+            aa. Defined In: "AdultView.vue"
+
+            ab. Rendered In: "AdultView.vue"
+
+            ac. Function: Shows the reddish-orange-to-orange Global Reports placeholder.
+
+        d. support-panel
+
+            aa. Defined In: "AdultView.vue"
+
+            ab. Rendered In: "AdultView.vue"
+
+            ac. Function: Shows the orange-to-yellow Support placeholder.
+
+        e. c99-panel
+
+            aa. Defined In: "AdultView.vue"
+
+            ab. Rendered In: "AdultView.vue"
+
+            ac. Function: Shows the rainbow-gradient C99 learning panel in the dashboard slot.
+
     B. Buttons: 
 
         a. Overview: 
@@ -252,7 +294,15 @@
 
             ac. Function: Opens help and information for the Adult area.
 
-        e. Back: 
+        e. Schedule: 
+
+            aa. Defined In: "AdultView.vue" Line(s): 25
+
+            ab. Rendered In: "AdultMenu.vue" Line(s): 36
+
+            ac. Function: Opens the adult learning schedule panel and shows upcoming milestones.
+
+        f. Back: 
 
             aa. Button Tag: "AdultView.vue" Line(s): 28
 
@@ -355,6 +405,82 @@
             ab. Rendered In: "C99View.vue" Line(s): 45 - 61
 
             ac. Function: Switches the C99 panel to the placeholder Games page.
+
+    C. Menus:
+
+        a. c99-navigation
+
+            aa. Defined In: "C99View.vue" Line(s): 43
+
+            ab. Rendered In: "C99View.vue" Line(s): 43 - 61
+
+            ac. Function: Lists the four starter C99 pages with a left-aligned menu layout.
+
+        e. schedule-panel
+
+            aa. Defined In: "AdultView.vue" Line(s): 205 - 265
+
+            ab. Rendered In: "AdultView.vue" Line(s): 205 - 265
+
+            ac. Function: Shows the green Schedule workspace with a square calendar button and four schedule actions.
+
+        f. schedule-panel-inner
+
+            aa. Defined In: "AdultView.vue" Line(s): 206 - 265
+
+            ab. Rendered In: "AdultView.vue" Line(s): 206 - 265
+
+            ac. Function: Stacks the calendar and schedule options vertically inside the Schedule panel.
+
+    B. Buttons:
+
+        g. Schedule:
+
+            aa. Defined In: "AdultView.vue" Line(s): 23
+
+            ab. Rendered In: "AdultMenu.vue" Line(s): 36
+
+            ac. Function: Opens the adult learning schedule panel and shows upcoming milestones.
+
+        h. schedule-calendar-button:
+
+            aa. Defined In: "AdultView.vue" Line(s): 208 - 222
+
+            ab. Rendered In: "AdultView.vue" Line(s): 208 - 222
+
+            ac. Function: Displays the top-left calendar icon button for the Schedule panel.
+
+        i. daily-schedule-button:
+
+            aa. Defined In: "AdultView.vue" Line(s): 224 - 238
+
+            ab. Rendered In: "AdultView.vue" Line(s): 224 - 238
+
+            ac. Function: Opens the Daily learning schedule option with its own green glow and left-aligned status dot.
+
+        j. weekly-schedule-button:
+
+            aa. Defined In: "AdultView.vue" Line(s): 239 - 253
+
+            ab. Rendered In: "AdultView.vue" Line(s): 239 - 253
+
+            ac. Function: Opens the Weekly schedule option with its own indigo glow and left-aligned status dot.
+
+        k. monthly-schedule-button:
+
+            aa. Defined In: "AdultView.vue" Line(s): 254 - 268
+
+            ab. Rendered In: "AdultView.vue" Line(s): 254 - 268
+
+            ac. Function: Opens the Monthly schedule option with its own cyan glow and left-aligned status dot.
+
+        l. yearly-schedule-button:
+
+            aa. Defined In: "AdultView.vue" Line(s): 269 - 283
+
+            ab. Rendered In: "AdultView.vue" Line(s): 269 - 283
+
+            ac. Function: Opens the Yearly schedule option with its own amber glow and left-aligned status dot.
 
     C. Menus:
 

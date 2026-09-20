@@ -16,9 +16,9 @@ IMPORTANT: “Remove” means take something away, and only then if you explicit
 
 IMPORTANT: Never assume a prior asset is disposable or should be overwritten.
 
-IMPORTANT: Any and all changes made to the program (additions, removals, edits) must be summarized and appended into the jasonReports(Changes) file in the project root. Include a time stamp and a date stamp. Always append underneath the last entry; do not prepend.
+IMPORTANT: Summarize every authorized repository change in a dated and timed entry appended to jasonReports(Changes), but only after safely verifying the append point and rechecking it for concurrent changes. If safe appending cannot be guaranteed, leave the report unchanged and mark reporting blocked. The report append does not require a recursive report entry.
 
-IMPORTANT: Any and all errors, warnings, or flags received in any context are to be output verbatim and appended into the jasonReports(Errors) file in the project root. Include a time stamp and a date stamp. Always append underneath the last entry; do not prepend.
+IMPORTANT: Append only a dated, timed, sanitized summary of relevant errors, warnings, or flags to jasonReports(Errors). Never print or append credentials, tokens, credential-bearing URLs, private keys, private service details, or secret environment values. If safe sanitization cannot be guaranteed, leave the report unchanged and mark reporting blocked.
 
 ALWAYS use fixed, complete Tailwind class names.
 
@@ -38,7 +38,9 @@ No inline style attributes
 
 No “fixing” layout by guessing in different files
 
-Verify with npm run build after each meaningful batch of edits
+After each meaningful batch, run only relevant checks whose exact commands, output paths, network effects, and other side effects were disclosed and explicitly authorized.
+
+Treat ESLint, builds, Playwright, SonarQube, provider validation, installation, network access, and generated output as separately gated actions. Unavailable, blocked, unauthorized, static-only, or stale-artifact checks are never passes.
 
 Use a predictable naming pattern
 
@@ -63,6 +65,10 @@ avoid “mystery” names or random utility classes acting as layout logic
 
 - Use code blocks only when showing exact edits or examples.
 
+- A failed validation authorizes read-only diagnosis only. Apply a fix only within the exact user-approved targets and side effects; otherwise stop and request approval.
+
+- A deployment or tooling plan cannot authorize changes to Vue components, application logic or state, routes, styling, curriculum data, or `names/cmb`. Those changes require separate explicit authorization and an architecture-aware implementation plan.
+
 - Before executing any plan from copilotPlan.md:
 
   - Read plan.md directly from disk.
@@ -78,6 +84,8 @@ avoid “mystery” names or random utility classes acting as layout logic
 </instructions>
 
 <system_instructions>
+
+- Treat `dist/` as generated output. Never delete, manually edit, or ignore tracked `dist/` files unless the deployment configuration has been verified to run `npm run build` first. Before changing `dist` tracking, inspect the deployment configuration and document the required build command.
 
 - This project features highly coupled, medium-to-high-end logical architectures.
 
@@ -95,6 +103,15 @@ avoid “mystery” names or random utility classes acting as layout logic
 
   - Apply styling using utility-first Tailwind CSS classes inside the templates.
 
-  - If any compilation or runtime errors occur, proactively perform a read-only inspection of the logs, identify the root cause, and execute the fix autonomously.
+  - If compilation or runtime errors occur, perform a read-only inspection of the logs and classify the root cause. Execute a fix only within the exact user-approved targets and side effects.
 
 </system_instructions>
+
+## Verified repository facts (2026-09-20)
+
+- The approved publication target is GitHub Pages at `/cTeacher/`; Vite's statically configured base is `/cTeacher/` in `vite.config.js`. Recheck this fact if `vite.config.js`, the repository name, or the Pages setting changes. Evidence: Task 4 static validation; not provider-runtime evidence.
+- The approved CI mode is standard GitHub-hosted mode. `.github/workflows/ci.yml` uses `ubuntu-24.04`, read-only contents permission, no cache, lifecycle-disabled frozen installation, pinned official action commits, Node 22, loopback-only preview/test configuration, and Chromium provisioning. GitHub controls the mutable image, administrator capability, and available network; a successful run proves only the recorded committed candidate and provider run.
+- `dist/` and `node_modules/` are source-built or installed outputs, not committed publication inputs. Preserve local bytes when changing tracking, and revalidate the exact index state before any future tracking operation. Evidence: Task 7 byte manifests and staged index counts.
+- Sonar analysis is configured in `sonar-project.properties` and `package.json`, but remains blocked until an approved host, project/data scope, credential path, Java runtime, scanner, and output policy are confirmed. Never treat the existing `sonar` script or configuration as proof that analysis ran.
+- These facts expire when the cited configuration, workflow, repository revision, provider settings, runtime/tool versions, or recorded evidence changes. Re-run scoped discovery before relying on them.
+- These rules document repository evidence and do not enforce provider behavior or guarantee build, CI, deployment, or Sonar success.

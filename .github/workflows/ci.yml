@@ -1,0 +1,151 @@
+name: CI
+
+on:
+  push:
+  pull_request:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ci-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  verify:
+    name: Lint, build, and production browser test
+    runs-on: ubuntu-24.04
+    timeout-minutes: 20
+    env:
+      CI: "true"
+      ESBUILD_BINARY_PATH: ${{ github.workspace }}/node_modules/@esbuild/linux-x64/bin/esbuild
+    steps:
+      - name: Check out candidate
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+
+      - name: Set up Node.js
+        uses: actions/setup-node@820762786026740c76f36085b0efc47a31fe5020 # v7.0.0
+        with:
+          node-version: "22"
+          package-manager-cache: false
+
+      - name: Record execution identity
+        shell: bash
+        run: |
+          printf 'candidate=%s\n' "$GITHUB_SHA"
+          printf 'runner_os=%s\n' "$RUNNER_OS"
+          printf 'runner_arch=%s\n' "$RUNNER_ARCH"
+          printf 'image_os=%s\n' "${ImageOS:-unknown}"
+          printf 'image_version=%s\n' "${ImageVersion:-unknown}"
+          node --version
+          npm --version
+          sha256sum package-lock.json
+
+      - name: Capture candidate manifest
+        shell: bash
+        run: |
+          git ls-files -z -- . \
+            ':(exclude)dist/**' \
+            ':(exclude)node_modules/**' \
+            ':(exclude)test-results/**' \
+            ':(exclude)playwright-report/**' \
+            | sort -z \
+            | xargs -0 sha256sum > "$RUNNER_TEMP/candidate.sha256"
+
+      - name: Install locked dependencies without lifecycle scripts
+        shell: bash
+        env:
+          npm_config_cache: ${{ runner.temp }}/npm-cache
+        run: |
+          status=0
+          npm ci --ignore-scripts --no-audit --no-fund || status=$?
+          sha256sum --check --status "$RUNNER_TEMP/candidate.sha256"
+          exit "$status"
+
+      - name: Verify locked esbuild binary
+        shell: bash
+        run: |
+          test -x "$ESBUILD_BINARY_PATH"
+          expected_version="$(node -e "const lock = require('./package-lock.json'); process.stdout.write(lock.packages['node_modules/esbuild'].version)")"
+          actual_version="$("$ESBUILD_BINARY_PATH" --version)"
+          test "$actual_version" = "$expected_version"
+          sha256sum --check --status "$RUNNER_TEMP/candidate.sha256"
+
+      - name: Install configured Chromium browser
+        shell: bash
+        env:
+          PLAYWRIGHT_BROWSERS_PATH: ${{ runner.temp }}/ms-playwright
+        run: |
+          status=0
+          node node_modules/playwright/cli.js install chromium || status=$?
+          sha256sum --check --status "$RUNNER_TEMP/candidate.sha256"
+          exit "$status"
+
+      - name: Lint
+        shell: bash
+        env:
+          npm_config_cache: ${{ runner.temp }}/npm-cache
+        run: |
+          status=0
+          npm run lint || status=$?
+          sha256sum --check --status "$RUNNER_TEMP/candidate.sha256"
+          exit "$status"
+
+      - name: Build and test production output
+        shell: bash
+        env:
+          PLAYWRIGHT_BROWSERS_PATH: ${{ runner.temp }}/ms-playwright
+          npm_config_cache: ${{ runner.temp }}/npm-cache
+        run: |
+          status=0
+          npm run test:e2e:prod || status=$?
+          sha256sum --check --status "$RUNNER_TEMP/candidate.sha256"
+          exit "$status"
+
+      - name: Verify and manifest production output
+        shell: bash
+        run: |
+          test -f dist/index.html
+          grep -Fq '/cTeacher/assets/' dist/index.html
+          if find dist -type l -print -quit | grep -q .; then
+            echo "::error::Production output contains a symbolic link"
+            exit 1
+          fi
+          find dist -type f -print0 \
+            | LC_ALL=C sort -z \
+            | xargs -0 sha256sum > "$RUNNER_TEMP/dist.sha256"
+          while IFS= read -r -d '' file; do
+            relative_path="${file#dist/}"
+            size="$(stat --format='%s' "$file")"
+            digest="$(sha256sum "$file" | cut -d ' ' -f 1)"
+            printf '%s\t%s\t%s\t%s\n' "$relative_path" file "$size" "$digest"
+          done < <(find dist -type f -print0 | LC_ALL=C sort -z) \
+            > "$RUNNER_TEMP/dist-manifest.tsv"
+          sha256sum --check --status "$RUNNER_TEMP/dist.sha256"
+          sha256sum --check --status "$RUNNER_TEMP/candidate.sha256"
+          cp "$RUNNER_TEMP/dist-manifest.tsv" dist/manifest.tsv
+
+      - name: Upload verified production artifact
+        uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
+        with:
+          name: production-${{ github.sha }}
+          path: dist/
+          if-no-files-found: error
+          retention-days: 7
+          compression-level: 6
+          overwrite: false
+          include-hidden-files: false
+
+      - name: Reject unexpected workspace output
+        shell: bash
+        run: |
+          if test -n "$(git ls-files --others --exclude-standard -- . \
+            ':(exclude)dist/**' \
+            ':(exclude)node_modules/**' \
+            ':(exclude)test-results/**' \
+            ':(exclude)playwright-report/**')"; then
+            echo "::error::Unexpected untracked output outside approved roots"
+            exit 1
+          fi

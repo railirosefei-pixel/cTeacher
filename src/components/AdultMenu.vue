@@ -22,12 +22,64 @@ const props = defineProps({
           typeof menuItem.id === "string" &&
           typeof menuItem.label === "string" &&
           typeof menuItem.accent === "string" &&
-          typeof menuItem.badge === "string",
+          typeof menuItem.badge === "string"
       ),
+  },
+  activeItem: {
+    type: String,
+    default: "overview",
   },
 });
 
 const emit = defineEmits(["select"]);
+
+const adultNavigationDotGlowClasses = {
+  overviewDotGlow:
+    "shadow-[0_0_0_2px_rgba(167,139,250,0.95),0_0_18px_rgba(167,139,250,1),0_0_36px_rgba(129,140,248,1),0_0_52px_rgba(99,102,241,1),0_0_80px_rgba(79,70,229,0.95)]",
+  programsDotGlow:
+    "shadow-[0_0_0_2px_rgba(94,234,212,0.95),0_0_18px_rgba(34,211,238,1),0_0_36px_rgba(52,211,153,1),0_0_52px_rgba(16,185,129,1),0_0_80px_rgba(5,150,105,0.95)]",
+  reportsDotGlow:
+    "shadow-[0_0_0_2px_rgba(232,121,249,0.95),0_0_18px_rgba(232,121,249,1),0_0_36px_rgba(192,132,252,1),0_0_52px_rgba(168,85,247,1),0_0_80px_rgba(147,51,234,0.95)]",
+  supportDotGlow:
+    "shadow-[0_0_0_2px_rgba(252,211,77,0.95),0_0_18px_rgba(251,191,36,1),0_0_36px_rgba(251,146,60,1),0_0_52px_rgba(249,115,22,1),0_0_80px_rgba(234,88,12,0.95)]",
+  scheduleDotGlow:
+    "shadow-[0_0_0_2px_rgba(22,101,52,0.98),0_0_18px_rgba(21,128,61,1),0_0_36px_rgba(16,185,129,1),0_0_52px_rgba(6,95,70,1),0_0_80px_rgba(5,150,105,0.95)]",
+  c99DotGlow:
+    "shadow-[0_0_0_2px_rgba(125,211,252,0.95),0_0_18px_rgba(56,189,248,1),0_0_36px_rgba(34,211,238,1),0_0_52px_rgba(14,165,233,1),0_0_80px_rgba(2,132,199,0.95)]",
+};
+
+const adultNavigationDotGlowMap = {
+  overview: "overviewDotGlow",
+  programs: "programsDotGlow",
+  reports: "reportsDotGlow",
+  support: "supportDotGlow",
+  schedule: "scheduleDotGlow",
+  c99: "c99DotGlow",
+};
+
+const adultNavigationButtonGlowClasses = {
+  overviewButtonGlow:
+    "shadow-[0_0_0_1px_rgba(167,139,250,0.9),0_0_14px_rgba(167,139,250,1),0_0_26px_rgba(129,140,248,1),0_0_44px_rgba(99,102,241,1),0_0_70px_rgba(79,70,229,0.95)] border-violet-300/90 bg-slate-800/95",
+  programsButtonGlow:
+    "shadow-[0_0_0_1px_rgba(94,234,212,0.9),0_0_14px_rgba(34,211,238,1),0_0_26px_rgba(52,211,153,1),0_0_44px_rgba(16,185,129,1),0_0_70px_rgba(5,150,105,0.95)] border-emerald-300/90 bg-slate-800/95",
+  reportsButtonGlow:
+    "shadow-[0_0_0_1px_rgba(232,121,249,0.9),0_0_14px_rgba(232,121,249,1),0_0_26px_rgba(192,132,252,1),0_0_44px_rgba(168,85,247,1),0_0_70px_rgba(147,51,234,0.95)] border-fuchsia-300/90 bg-slate-800/95",
+  supportButtonGlow:
+    "shadow-[0_0_0_1px_rgba(252,211,77,0.9),0_0_14px_rgba(251,191,36,1),0_0_26px_rgba(251,146,60,1),0_0_44px_rgba(249,115,22,1),0_0_70px_rgba(234,88,12,0.95)] border-amber-300/90 bg-slate-800/95",
+  scheduleButtonGlow:
+    "shadow-[0_0_0_1px_rgba(22,101,52,0.9),0_0_14px_rgba(21,128,61,1),0_0_26px_rgba(16,185,129,1),0_0_44px_rgba(6,95,70,1),0_0_70px_rgba(5,150,105,0.95)] border-green-400/90 bg-slate-800/95",
+  c99ButtonGlow:
+    "shadow-[0_0_0_1px_rgba(125,211,252,0.9),0_0_14px_rgba(56,189,248,1),0_0_26px_rgba(34,211,238,1),0_0_44px_rgba(14,165,233,1),0_0_70px_rgba(2,132,199,0.95)] border-sky-300/90 bg-slate-800/95",
+};
+
+const adultNavigationButtonGlowMap = {
+  overview: "overviewButtonGlow",
+  programs: "programsButtonGlow",
+  reports: "reportsButtonGlow",
+  support: "supportButtonGlow",
+  schedule: "scheduleButtonGlow",
+  c99: "c99ButtonGlow",
+};
 
 /**
  * Forward a selected menu item to the parent.
@@ -47,30 +99,41 @@ function selectItem(itemId) {
       id="adult-navigation-header"
       class="mb-5 border-b border-slate-700 pb-4"
     >
-      <p
-        class="text-xs font-semibold uppercase tracking-[0.22em] text-violet-300"
-      >
+      <p class="text-xs font-semibold uppercase tracking-[0.22em] text-violet-300">
         Menu
       </p>
-      <h2 class="mt-2 text-2xl font-bold text-white">Adult</h2>
+      <h2 class="mt-2 text-2xl font-bold text-white">
+        Adult
+      </h2>
     </div>
 
-    <div id="adult-navigation-items" class="space-y-3">
+    <div
+      id="adult-navigation-items"
+      class="space-y-3"
+    >
       <button
         v-for="item in props.items"
         :key="item.id"
         type="button"
+        :class="[
+          'group flex w-full items-center justify-between rounded-2xl border px-4 py-3 text-left transition hover:border-violet-400/60 hover:bg-slate-800 focus:outline-none focus:ring-2 focus:ring-violet-400/70',
+          props.activeItem === item.id
+            ? adultNavigationButtonGlowClasses[adultNavigationButtonGlowMap[item.id]]
+            : 'border-slate-700 bg-slate-800/90',
+        ]"
         @click="selectItem(item.id)"
-        class="group flex w-full items-center justify-between rounded-2xl border border-slate-700 bg-slate-800/90 px-4 py-3 text-left transition hover:border-violet-400/60 hover:bg-slate-800 focus:outline-none focus:ring-2 focus:ring-violet-400/70"
       >
         <span class="flex items-center gap-3">
           <span
             class="h-2.5 w-2.5 rounded-full bg-gradient-to-r"
-            :class="item.accent"
-          ></span>
-          <span class="text-sm font-semibold text-slate-100">{{
-            item.label
-          }}</span>
+            :class="[
+              item.accent,
+              props.activeItem === item.id
+                ? adultNavigationDotGlowClasses[adultNavigationDotGlowMap[item.id]]
+                : '',
+            ]"
+          />
+          <span class="text-sm font-semibold text-slate-100">{{ item.label }}</span>
         </span>
         <span
           class="rounded-full border border-slate-600 bg-slate-900/80 px-2 py-1 text-[10px] font-medium uppercase tracking-[0.12em] text-slate-300"

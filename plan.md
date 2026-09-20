@@ -1,4 +1,6 @@
-Read C:\cTeacher\rules\copilot-rules.md
+- Read C:\cTeacher\rules\copilot-rules.md
+
+- Avoid embedding unescaped JS/JSDoc text in one PowerShell string and instead run separate parser-safe checks.
 
 - Do not create any directories or files without my explicit consent. If a file or directory should be created, ask me first, always.
 
@@ -6,9 +8,9 @@ Read C:\cTeacher\rules\copilot-rules.md
 
 - Make sure that front-end pipelines are being created often, so that if there's an error it will be extremely simple to find exactly where that error is. I want everything perfectly organized and labeled to avoid any confusion for debugging or adding functionality.
 
-- After every small batch of code is implemented, edited, or removed or any combination of the 3, use Playwright tests, Sonarqube, and ESLint to make sure that the code is cleaned up, functional, and easy for you to read.
+- After each meaningful batch of authorized edits, run only the checks relevant to that batch after their safety and consent gates have passed. Record unavailable, blocked, or unauthorized checks as `not run` or `blocked`; never treat them as passes.
 
-- IMPORTANT Do not run these tests after every little edit unless explicitly told to do so, only after a small batch of edits have been made.
+- IMPORTANT Do not run tests, builds, scanners, installations, networked commands, or output-generating validation without explicit consent after disclosing the exact command and side effects.
 
 - IMPORTANT Follow the plan 1 step at a time
 
@@ -20,4 +22,4 @@ Read C:\cTeacher\rules\copilot-rules.md
 
 - Whenever a new menu is created, update the text file names/cmb. Append the menu's name, where it's defined, where it's rendered, and what its function is, in the exact same format as the other menus in the same text file. If the headers and categories needed for the menu to be placed under exist then simply fill them out with the relevant information. If either the page header, the category header, or both do not exist then create it and then fill out the relevant information, while following the format seen in the rest of the text file.
 
-1.) Run Prettier
+

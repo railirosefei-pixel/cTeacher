@@ -22,7 +22,7 @@ defineProps({
           navItem &&
           typeof navItem.id === "string" &&
           typeof navItem.label === "string" &&
-          typeof navItem.accent === "string",
+          typeof navItem.accent === "string"
       ),
   },
   activeItem: {
@@ -67,17 +67,23 @@ function select(viewId) {
         C
       </div>
       <div id="brand-copy">
-        <p class="text-xs uppercase tracking-[0.2em] text-slate-400">Portal</p>
-        <h1 class="text-xl font-semibold text-white">cTeacher</h1>
+        <p class="text-xs uppercase tracking-[0.2em] text-slate-400">
+          Portal
+        </p>
+        <h1 class="text-xl font-semibold text-white">
+          cTeacher
+        </h1>
       </div>
     </div>
 
-    <nav id="primary-navigation" class="flex flex-col gap-3">
+    <nav
+      id="primary-navigation"
+      class="flex flex-col gap-3"
+    >
       <button
         v-for="item in navItems"
         :key="item.id"
         type="button"
-        @click="select(item.id)"
         :class="[
           'group relative overflow-hidden rounded-2xl border px-4 py-4 text-left shadow-lg shadow-slate-950/20 transition-all duration-200 hover:-translate-y-0.5 hover:border-slate-500 hover:bg-slate-800 focus:outline-none focus:ring-2 focus:ring-violet-400/70',
           item.id === activeItem
@@ -85,22 +91,14 @@ function select(viewId) {
             : 'border-slate-700 bg-slate-800/90',
           item.id === activeItem ? navGlowClasses[item.id] : '',
         ]"
+        @click="select(item.id)"
       >
-        <span
-          class="pointer-events-none absolute inset-[1px] rounded-[15px] transition-opacity duration-200"
-          :class="
-            item.id === activeItem ? navGlowClasses[item.id] : 'opacity-0'
-          "
-          aria-hidden="true"
-        ></span>
         <span
           class="absolute inset-y-0 left-0 w-1.5 bg-gradient-to-b"
           :class="item.accent"
-        ></span>
+        />
         <span class="relative flex items-center justify-between pl-3">
-          <span class="text-base font-semibold text-slate-100">{{
-            item.label
-          }}</span>
+          <span class="text-base font-semibold text-slate-100">{{ item.label }}</span>
           <span
             class="rounded-full border border-slate-600 bg-slate-900/80 px-2 py-1 text-xs font-medium text-slate-300 transition-colors group-hover:border-slate-400 group-hover:text-white"
           >

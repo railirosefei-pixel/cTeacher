@@ -4,21 +4,35 @@
   "version": "1.0.0",
   "type": "module",
   "scripts": {
-    "dev": "vite --host 127.0.0.1",
-    "lint": "eslint src/js/main.js vite.config.js --no-config-lookup --global document --rule \"no-undef:error\" --rule \"no-unused-vars:error\"",
+    "dev": "vite --host 127.0.0.1 --port 5127 --strictPort",
+    "lint": "eslint . --max-warnings 0",
     "build": "vite build",
-    "preview": "vite preview",
-    "start": "vite --host 127.0.0.1",
-    "verify": "npm run lint && npm run build"
+    "preview": "vite preview --host 127.0.0.1 --port 5127 --strictPort",
+    "preview:test": "vite preview --host 127.0.0.1 --port 5128 --strictPort",
+    "start": "vite --host 127.0.0.1 --port 5127 --strictPort",
+    "format": "prettier --write .",
+    "prettier": "prettier --write .",
+    "test:e2e": "playwright test",
+    "test:e2e:prod": "npm run build && playwright test --config=playwright.production.config.js",
+    "test:e2e:ui": "playwright test --ui",
+    "sonar": "sonar-scanner",
+    "verify": "npm run lint && npm run build && npm run test:e2e -- --reporter=line"
   },
   "dependencies": {
     "tailwindcss": "^4.0.0-alpha.1",
     "vue": "^3.5.43"
   },
   "devDependencies": {
+    "@eslint/js": "^9.1.0",
+    "@playwright/test": "^1.49.1",
     "@tailwindcss/vite": "^4.0.0-alpha.1",
     "@vitejs/plugin-vue": "^5.2.4",
     "eslint": "^9.0.0",
+    "eslint-plugin-vue": "^9.0.0",
+    "globals": "^15.12.0",
+    "playwright": "^1.49.1",
+    "prettier": "^3.9.8",
+    "sonar-scanner": "^3.0.0",
     "vite": "^6.4.0"
   },
   "allowScripts": {

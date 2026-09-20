@@ -95,3 +95,132 @@ PowerShell reported `NativeCommandError` for npm notice output; no actual verifi
 [2026-09-19 08:50:00 -07:00] SonarQube output (workspace connection limitation):
 The workspace folder is not bound to a remote project on SonarQube (Cloud, Server).
 SonarQube for IDE needs to be in Connected Mode to retrieve the detected Security Hotspots.I have initiated the binding process for you.
+[2026-09-19] Playwright selector check failed:
+locator.click: Timeout 10000ms exceeded
+Call log:
+    - waiting for getByRole('button', { name: 'Overview', exact: true })
+[2026-09-19] ERROR: Your input to the tool was invalid (must match pattern "^[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-5][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}$")
+Please check your input and try again.
+[2026-09-19] ERROR: Your input to the tool was invalid (must have required property 'explanation')
+Please check this input and continue using the complete tool request.
+[2026-09-19] Applying patch failed with error: File not found: c:\cTeacher\jasonReports\Errors
+[2026-09-19] Applying patch failed with error: Invalid context at character 0:
+2026-09-19 15:22:00: Added a stronger active box-shadow to the selected adult menu button itself in src/components/AdultMenu.vue so the current panel item glows more visibly without altering the existing dot-glow definitions or the menu structure. Validation: npm run build passed.
+2026-09-19 16:44:00: No errors or warnings were recorded for the six-shade green Schedule panel update; npm run build completed successfully.
+2026-09-19 21:50:00:
+The patch was rejected before changing anything because the edit request lacked its required description field.
+
+2026-09-19 21:52:00:
+Vite build: Failed due to a Vue syntax error in `src/components/AdultMenu.vue:71:193` (`Unexpected token`). No warnings reported.
+
+2026-09-19 22:36:00:
+locator.getAttribute: strict mode violation: getByRole('button', { name: 'Schedule' }) resolved to 2 elements:
+        1) <button type="button" class="group flex w-full items-center justify-between rounded-2xl border px-4 py-3 text-left transition hover:border-violet-400/60 hover:bg-slate-800 focus:outline-none focus:ring-2 focus:ring-violet-400/70 shadow-[0_0_0_1px_rgba(22,101,52,0.9),0_0_14px_rgba(21,128,61,1),0_0_26px_rgba(16,185,129,1),0_0_44px_rgba(6,95,70,1),0_0_70px_rgba(5,150,105,0.95)] border-green-400/90 bg-slate-800/95">…</button> aka getByRole('button', { name: 'Schedule Plan' })
+        2) <button type="button" data-v-03b70c2a="" id="schedule-calendar-button" aria-label="Schedule calendar" name="schedule-calendar-button" class="mt-2.5 ml-2.5 block size-[clamp(182px,32vw,260px)] overflow-hidden rounded-3xl border border-white/30 bg-gradient-to-br from-slate-200 via-slate-300 to-slate-400 p-0 shadow-[0_12px_24px_rgba(15,23,42,0.35),inset_0_0_0_3px_rgba(255,255,255,0.45),inset_0_-18px_26px_rgba(15,23,42,0.12)]">…</button> aka getByRole('button', { name: 'Schedule calendar' })
+
+Call log:
+    - waiting for getByRole('button', { name: 'Schedule' })
+Page Title: cTeacher
+URL: http://127.0.0.1:5127/
+2026-09-19 22:37:00:
+locator.getAttribute: Timeout 10000ms exceeded.
+Call log:
+    - waiting for locator('#schedule-calendar-button')
+Page Title: cTeacher
+URL: http://127.0.0.1:5127/
+2026-09-19 21:52:00:
+ERROR: Your input to the tool was invalid (must have required property 'explanation')
+Please check your input and try again.
+
+2026-09-19 21:53:00:
+ESLint: Passed with no errors or warnings.
+
+Vite build: Failed due to a Vue syntax error in `src/components/AdultMenu.vue:71:193` (`Unexpected token`). No warnings reported.
+
+2026-09-19 22:40:00 -07:00:
+WARNING src\App.vue:17: component tag has no matching source file by basename: <ViewId> | /** @type {Record<ViewId, { component?: object, title?: string, message?: string }>} */
+
+WARNING src\App.vue:31: component tag has no matching source file by basename: <ViewId> | /** @type {import('vue').Ref<ViewId>} Current active view.
+
+WARNING src\views\AdultView.vue:65: legacy class name found | id: "schedule-calendar-button",
+
+The initial combined PowerShell audit command failed with a parser error before the corrected read-only audit ran.
+
+2026-09-19 22:45:24 -07:00:
+Audit diagnostics recorded verbatim:
+WARNING src\App.vue:17: component tag has no matching source file by basename: <ViewId> | /** @type {Record<ViewId, { component?: object, title?: string, message?: string }>} */
+
+WARNING src\App.vue:31: component tag has no matching source file by basename: <ViewId> | /** @type {import('vue').Ref<ViewId>} Current active view.
+
+WARNING src\views\AdultView.vue:65: legacy class name found | id: "schedule-calendar-button",
+
+The initial combined PowerShell audit command failed with a parser error before the corrected read-only audit ran.
+Remediation: split the audit into separate parser-safe PowerShell commands and avoid embedding unescaped JavaScript/JSDoc syntax in the combined command.
+Corrected audit output:
+PASS: src\App.vue contains the expected ViewId JSDoc references.
+PASS: src\views\AdultView.vue contains the required id schedule-calendar-button.
+AUDIT: PASS
+2026-09-19 22:45:24 -07:00:
+Playwright validation diagnostic:
+locator.waitFor: Timeout 10000ms exceeded
+Call log:
+    - waiting for getByRole('heading', { name: 'Adult Curriculum' }) to be visible
+Page Title: cTeacher
+URL: http://127.0.0.1:5127/
+The selector was outdated; the rendered Adult view heading is "Learning dashboard".
+2026-09-19 22:45:24 -07:00:
+Playwright validation diagnostic from the first corrected assertion attempt:
+locator.waitFor: Timeout 10000ms exceeded
+Call log:
+    - waiting for getByRole('heading', { name: 'Learning dashboard' }) to be visible
+Page Title: cTeacher
+URL: http://127.0.0.1:5127/
+The page had returned to the home view before the assertion; rerunning the click and assertion passed with result: " Learning dashboard ".
+2026-09-19 22:50:00 -07:00:
+Audit remediation complete.
+2026-09-20 00:09:07 -07:00:
+Focused Playwright validation first attempt failed:
+Test timeout of 30000ms exceeded.
+
+Error: locator.click: Test timeout of 30000ms exceeded.
+Call log:
+    - waiting for getByRole('button', { name: 'Adult', exact: true })
+
+The locator was corrected to the rendered accessible name "Adult Menu" and the focused test passed on rerun.
+
+SonarQube validation failed:
+npm notice run vite-tailwind4-framework@1.0.0 sonar
+npm notice run sonar-scanner
+
+ERROR: JAVA_HOME not found in your environment, and no Java
+             executable present in the PATH.
+Please set the JAVA_HOME variable in the environment to match the
+location of your Java installation, or add "java.exe" to the PATH
+Root cause: the initial combined PowerShell audit command embedded JavaScript/JSDoc syntax inside a single quoted string and triggered a PowerShell parser error before the read-only audit could run.
+Fix: split the audit into parser-safe read-only commands, then re-run the validation.
+Exact diagnostics from the failed audit:
+WARNING src\App.vue:17: component tag has no matching source file by basename: <ViewId> | /** @type {Record<ViewId, { component?: object, title?: string, message?: string }>} */
+WARNING src\App.vue:31: component tag has no matching source file by basename: <ViewId> | /** @type {import('vue').Ref<ViewId>} Current active view.
+WARNING src\views\AdultView.vue:65: legacy class name found | id: "schedule-calendar-button",
+The initial combined PowerShell audit command failed with a parser error before the corrected read-only audit ran.
+Remediation: split the audit into separate parser-safe PowerShell commands and avoid embedding unescaped JavaScript/JSDoc syntax in the combined command.
+Corrected audit output:
+PASS: src\App.vue contains the expected ViewId JSDoc references.
+PASS: src\views\AdultView.vue contains the required id schedule-calendar-button.
+AUDIT: PASS
+Validation: npm run verify passed with ESLint clean and Vite build success after the repair.
+2026-09-20:
+npm run lint — Exit 1: 82 warnings; ESLint maximum is 0.
+npm run sonar — Exit 1: JAVA_HOME not found.
+Java/JAVA_HOME is unavailable.
+2026-09-20 01:06:00:
+Focused plan validation initially reported a new blank line at EOF in plan.md. The plan content was retained; subsequent targeted checks confirmed the appended plan and the required ASCII content. No application validation was run because this task only strengthened plan.md.
+2026-09-20 01:06:00:
+PowerShell validation command failed because the report paths containing parentheses were not quoted:
+Changes : The term 'Changes' is not recognized as the name of a cmdlet, function, script file, or operable program.
+2026-09-20 02:14:29 -07:00: Task 1 validation encountered task-caused command issues: one read-only precondition check timed out during an unnecessary recursive filename search; one in-memory inverse-hash command misparsed unquoted report paths; and its parser-safe retry was interrupted before producing evidence. No repository writes resulted from those commands. Direct file reads and focused non-executing validation subsequently confirmed the approved hunks, strict UTF-8, no diagnostics, and clean worktree/staged whitespace checks. Git also warned that LF will be replaced by CRLF the next time Git touches plan.md and rules/copilot-rules.md.
+2026-09-20 02:42:19 -07:00: Task 4 static validation initially produced five false assertions because a PowerShell check over-escaped quotation marks. Direct text search confirmed all required clauses were present; this was a validation-command defect, not a repository defect. Git also warned that LF will be replaced by CRLF the next time Git touches package.json and vite.config.js.
+2026-09-20 04:07:48 -07:00: Task 7 encountered task-caused command issues: an initial validator incorrectly required LF-only .gitignore bytes; a stale PowerShell Git function caused a call-depth failure before any index mutation; update-index --force-remove --stdin ignored newly ignored paths and made no change; and two terminal checks were interrupted. Byte inspection confirmed the approved .gitignore content. Freshly approved bounded git rm --cached commands completed the intended index-only removals, and recovery checks confirmed exact staged counts, unchanged physical hashes, no conflicts, no intent-to-add entries, and no unrelated index changes.
+2026-09-20 04:12:58 -07:00: Task 8 discovery encountered task-caused command issues: one discovery wrapper was interrupted after parser/termination errors and one PowerShell JSON parser rejected package-lock.json; a Node JSON parse completed the lockfile check. Repository prerequisites remain blocked, not failed.
+2026-09-20 04:20:01 -07:00: Task 9 produced no repository errors. Sonar remains accurately recorded as blocked because its host, data scope, credential path, Java runtime, scanner, and output policy are not confirmed.
+2026-09-20 04:21:39 -07:00: Task 10 runtime verification is blocked, not failed: the candidate is staged but not committed, the approved standard GitHub-hosted workflow requires the exact committed candidate, and a local build could overwrite protected dist output. No runtime, network, installation, deployment, or rollback action was performed.

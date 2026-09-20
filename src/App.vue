@@ -65,12 +65,18 @@ function goHome() {
 </script>
 
 <template>
-  <div id="app-shell" class="min-h-screen bg-slate-950 text-slate-100">
+  <div
+    id="app-shell"
+    class="min-h-screen bg-slate-950 text-slate-100"
+  >
     <div
       id="app-frame"
       class="flex min-h-screen w-full items-start justify-start px-4 py-6 sm:px-5 lg:px-6"
     >
-      <div id="app-layout" class="flex w-full items-start gap-6">
+      <div
+        id="app-layout"
+        class="flex w-full items-start gap-6"
+      >
         <SidebarNav
           :nav-items="navItems"
           :active-item="currentView"
@@ -83,11 +89,12 @@ function goHome() {
             v-if="activeView.component"
             @back="goHome"
           />
-          <section id="unavailable-view" v-else class="max-w-xl">
-            <span
-              class="text-xs font-semibold uppercase tracking-[0.2em] text-cyan-300"
-              >Coming soon</span
-            >
+          <section
+            v-else
+            id="unavailable-view"
+            class="max-w-xl"
+          >
+            <span class="text-xs font-semibold uppercase tracking-[0.2em] text-cyan-300">Coming soon</span>
             <h2 class="mt-4 text-3xl font-bold text-white">
               {{ activeView.title }}
             </h2>
