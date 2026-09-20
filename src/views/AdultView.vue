@@ -54,6 +54,7 @@ const adultSubMenuItems = [
 const isC99ViewOpen = ref(false);
 const currentC99Page = ref("lessons");
 const selectedAdultMenuItem = ref("overview");
+const selectedScheduleOption = ref("");
 
 /** Keep the Schedule panel active when its calendar control is selected. */
 function openSchedulePanel() {
@@ -61,10 +62,15 @@ function openSchedulePanel() {
   isC99ViewOpen.value = false;
 }
 
+/** Change the active schedule button state without applying a global glow style. */
+function selectScheduleOption(optionId) {
+  selectedScheduleOption.value = optionId;
+}
+
 const scheduleButtonConfig = {
   id: "schedule-calendar-button",
   image:
-    "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512'%3E%3Crect width='512' height='512' rx='52' fill='%230f172a'/%3E%3Crect x='46' y='46' width='420' height='420' rx='28' fill='%23f8fafc'/%3E%3Crect x='46' y='46' width='420' height='82' rx='28' fill='%236f7cff'/%3E%3Cpath d='M46 122h420' stroke='%23556ad6' stroke-width='8'/%3E%3Cpath d='M128 46v86M384 46v86' stroke='%2398a2c3' stroke-width='10' stroke-linecap='round'/%3E%3Cg fill='%23e2e8f0'%3E%3Crect x='90' y='178' width='92' height='64' rx='10'/%3E%3Crect x='210' y='178' width='92' height='64' rx='10'/%3E%3Crect x='330' y='178' width='92' height='64' rx='10'/%3E%3Crect x='90' y='270' width='92' height='64' rx='10'/%3E%3Crect x='210' y='270' width='92' height='64' rx='10'/%3E%3Crect x='330' y='270' width='92' height='64' rx='10'/%3E%3Crect x='90' y='362' width='92' height='64' rx='10'/%3E%3Crect x='210' y='362' width='92' height='64' rx='10'/%3E%3Crect x='330' y='362' width='92' height='64' rx='10'/%3E%3C/g%3E%3Crect x='98' y='104' width='48' height='14' rx='7' fill='%23dbeafe'/%3E%3Crect x='366' y='104' width='48' height='14' rx='7' fill='%23dbeafe'/%3E%3C/svg%3E",
+    "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512'%3E%3Crect width='512' height='512' rx='52' fill='%2307121d'/%3E%3Crect x='46' y='46' width='420' height='420' rx='28' fill='%230f172a'/%3E%3Crect x='46' y='46' width='420' height='82' rx='28' fill='%231b2c4d'/%3E%3Cpath d='M46 122h420' stroke='%235b6d9a' stroke-width='8'/%3E%3Cpath d='M128 46v86M384 46v86' stroke='%23889ac9' stroke-width='10' stroke-linecap='round'/%3E%3Cg fill='%231d3555'%3E%3Crect x='90' y='178' width='92' height='64' rx='10'/%3E%3Crect x='210' y='178' width='92' height='64' rx='10'/%3E%3Crect x='330' y='178' width='92' height='64' rx='10'/%3E%3Crect x='90' y='270' width='92' height='64' rx='10'/%3E%3Crect x='210' y='270' width='92' height='64' rx='10'/%3E%3Crect x='330' y='270' width='92' height='64' rx='10'/%3E%3Crect x='90' y='362' width='92' height='64' rx='10'/%3E%3Crect x='210' y='362' width='92' height='64' rx='10'/%3E%3Crect x='330' y='362' width='92' height='64' rx='10'/%3E%3C/g%3E%3Crect x='98' y='104' width='48' height='14' rx='7' fill='%2362a4ff'/%3E%3Crect x='366' y='104' width='48' height='14' rx='7' fill='%2362a4ff'/%3E%3C/svg%3E",
   label: "Schedule calendar",
   action: openSchedulePanel,
 };
@@ -233,10 +239,19 @@ function closeC99Panel() {
               id="daily-schedule-button"
               type="button"
               name="daily-schedule-button"
-              class="schedule-option-button schedule-daily-button"
+              :class="[
+                'schedule-option-button schedule-daily-button',
+                selectedScheduleOption === 'daily' ? 'schedule-daily-button-active' : '',
+              ]"
+              @click="selectScheduleOption('daily')"
             >
               <span class="schedule-option-main">
-                <span class="schedule-option-dot schedule-daily-dot" />
+                <span
+                  :class="[
+                    'schedule-option-dot schedule-daily-dot',
+                    selectedScheduleOption === 'daily' ? 'schedule-daily-dot-active' : '',
+                  ]"
+                />
                 <span class="schedule-option-label">Daily</span>
               </span>
             </button>
@@ -245,10 +260,19 @@ function closeC99Panel() {
               id="weekly-schedule-button"
               type="button"
               name="weekly-schedule-button"
-              class="schedule-option-button schedule-weekly-button"
+              :class="[
+                'schedule-option-button schedule-weekly-button',
+                selectedScheduleOption === 'weekly' ? 'schedule-weekly-button-active' : '',
+              ]"
+              @click="selectScheduleOption('weekly')"
             >
               <span class="schedule-option-main">
-                <span class="schedule-option-dot schedule-weekly-dot" />
+                <span
+                  :class="[
+                    'schedule-option-dot schedule-weekly-dot',
+                    selectedScheduleOption === 'weekly' ? 'schedule-weekly-dot-active' : '',
+                  ]"
+                />
                 <span class="schedule-option-label">Weekly</span>
               </span>
             </button>
@@ -257,10 +281,19 @@ function closeC99Panel() {
               id="monthly-schedule-button"
               type="button"
               name="monthly-schedule-button"
-              class="schedule-option-button schedule-monthly-button"
+              :class="[
+                'schedule-option-button schedule-monthly-button',
+                selectedScheduleOption === 'monthly' ? 'schedule-monthly-button-active' : '',
+              ]"
+              @click="selectScheduleOption('monthly')"
             >
               <span class="schedule-option-main">
-                <span class="schedule-option-dot schedule-monthly-dot" />
+                <span
+                  :class="[
+                    'schedule-option-dot schedule-monthly-dot',
+                    selectedScheduleOption === 'monthly' ? 'schedule-monthly-dot-active' : '',
+                  ]"
+                />
                 <span class="schedule-option-label">Monthly</span>
               </span>
             </button>
@@ -269,10 +302,19 @@ function closeC99Panel() {
               id="yearly-schedule-button"
               type="button"
               name="yearly-schedule-button"
-              class="schedule-option-button schedule-yearly-button"
+              :class="[
+                'schedule-option-button schedule-yearly-button',
+                selectedScheduleOption === 'yearly' ? 'schedule-yearly-button-active' : '',
+              ]"
+              @click="selectScheduleOption('yearly')"
             >
               <span class="schedule-option-main">
-                <span class="schedule-option-dot schedule-yearly-dot" />
+                <span
+                  :class="[
+                    'schedule-option-dot schedule-yearly-dot',
+                    selectedScheduleOption === 'yearly' ? 'schedule-yearly-dot-active' : '',
+                  ]"
+                />
                 <span class="schedule-option-label">Yearly</span>
               </span>
             </button>
@@ -370,7 +412,12 @@ function closeC99Panel() {
 }
 
 .schedule-daily-button {
-  border-color: rgba(134, 239, 172, 0.9);
+  border-color: rgba(148, 163, 184, 0.8);
+}
+
+.schedule-daily-button-active {
+  border-color: rgba(110, 231, 183, 0.9);
+  background-color: rgba(15, 23, 42, 0.95);
   box-shadow:
     0 0 0 1px rgba(110, 231, 183, 0.9),
     0 0 14px rgba(52, 211, 153, 1),
@@ -380,7 +427,12 @@ function closeC99Panel() {
 }
 
 .schedule-weekly-button {
+  border-color: rgba(148, 163, 184, 0.8);
+}
+
+.schedule-weekly-button-active {
   border-color: rgba(165, 180, 252, 0.9);
+  background-color: rgba(15, 23, 42, 0.95);
   box-shadow:
     0 0 0 1px rgba(165, 180, 252, 0.9),
     0 0 14px rgba(99, 102, 241, 1),
@@ -390,7 +442,12 @@ function closeC99Panel() {
 }
 
 .schedule-monthly-button {
+  border-color: rgba(148, 163, 184, 0.8);
+}
+
+.schedule-monthly-button-active {
   border-color: rgba(125, 211, 252, 0.9);
+  background-color: rgba(15, 23, 42, 0.95);
   box-shadow:
     0 0 0 1px rgba(125, 211, 252, 0.9),
     0 0 14px rgba(56, 189, 248, 1),
@@ -400,7 +457,12 @@ function closeC99Panel() {
 }
 
 .schedule-yearly-button {
+  border-color: rgba(148, 163, 184, 0.8);
+}
+
+.schedule-yearly-button-active {
   border-color: rgba(252, 211, 77, 0.9);
+  background-color: rgba(15, 23, 42, 0.95);
   box-shadow:
     0 0 0 1px rgba(252, 211, 77, 0.9),
     0 0 14px rgba(251, 191, 36, 1),
@@ -411,6 +473,9 @@ function closeC99Panel() {
 
 .schedule-daily-dot {
   background: linear-gradient(135deg, #86efac, #22c55e);
+}
+
+.schedule-daily-dot-active {
   box-shadow:
     0 0 10px rgba(34, 197, 94, 1),
     0 0 14px rgba(22, 163, 74, 1);
@@ -418,6 +483,9 @@ function closeC99Panel() {
 
 .schedule-weekly-dot {
   background: linear-gradient(135deg, #c7d2fe, #818cf8);
+}
+
+.schedule-weekly-dot-active {
   box-shadow:
     0 0 10px rgba(99, 102, 241, 1),
     0 0 14px rgba(79, 70, 229, 1);
@@ -425,6 +493,9 @@ function closeC99Panel() {
 
 .schedule-monthly-dot {
   background: linear-gradient(135deg, #bae6fd, #38bdf8);
+}
+
+.schedule-monthly-dot-active {
   box-shadow:
     0 0 10px rgba(56, 189, 248, 1),
     0 0 14px rgba(14, 165, 233, 1);
@@ -432,6 +503,9 @@ function closeC99Panel() {
 
 .schedule-yearly-dot {
   background: linear-gradient(135deg, #fde68a, #f59e0b);
+}
+
+.schedule-yearly-dot-active {
   box-shadow:
     0 0 10px rgba(251, 191, 36, 1),
     0 0 14px rgba(249, 115, 22, 1);

@@ -22,4 +22,4 @@
 
 - Whenever a new menu is created, update the text file names/cmb. Append the menu's name, where it's defined, where it's rendered, and what its function is, in the exact same format as the other menus in the same text file. If the headers and categories needed for the menu to be placed under exist then simply fill them out with the relevant information. If either the page header, the category header, or both do not exist then create it and then fill out the relevant information, while following the format seen in the rest of the text file.
 
-1.) Please proceed, but just be careful to make sure that "I reviewed the current implementation in AdultView.vue before any edits. The button is already rendered in the schedule panel, and the current styling is a bright blue/glass treatment; the main risk is a visual mismatch with the darker adult dashboard if the hover and focus states are not adjusted to match the rest of the app. No code changes have been made." is accounted for and make sure that none of the formatting of the buttons, containers, menus, panels, or functionality are changed or negatively impacted by the implementation of these edits
+1.) 
