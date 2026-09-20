@@ -23,3 +23,6 @@
 - Whenever a new menu is created, update the text file names/cmb. Append the menu's name, where it's defined, where it's rendered, and what its function is, in the exact same format as the other menus in the same text file. If the headers and categories needed for the menu to be placed under exist then simply fill them out with the relevant information. If either the page header, the category header, or both do not exist then create it and then fill out the relevant information, while following the format seen in the rest of the text file.
 
 
+1.) I just did a several hours long overhaul of a huge part of the framework of this program.  Check everything to see that there is no duplicate code, no contradictions, no stale code, no syntax errors, no poorly written code, etc...
+
+2.) If you need to create some tests to do a thorough job then please do, and if you do, store them in the tests directory
