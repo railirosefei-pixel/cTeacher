@@ -216,12 +216,12 @@ function closeC99Panel() {
             id="c99-curriculum-button"
             type="button"
             name="c99-curriculum-button"
-            class="c99-curriculum-button"
-            :class="selectedCurriculumButton === 'c99' ? 'c99-curriculum-button-active' : ''"
+            class="c99-curriculum-button flex min-h-16 items-center gap-3 rounded-2xl border border-sky-300/65 bg-slate-900/90 px-5 py-4 text-left text-[0.95rem] font-bold text-slate-50 transition duration-150 hover:-translate-y-0.5 focus:outline-none focus-visible:ring-2 focus-visible:ring-white/85"
+            :class="selectedCurriculumButton === 'c99' ? 'border-sky-300 shadow-[0_0_0_1px_rgba(125,211,252,0.95),0_0_14px_rgba(56,189,248,1),0_0_28px_rgba(14,165,233,1),0_0_52px_rgba(2,132,199,0.95)]' : ''"
             :aria-pressed="selectedCurriculumButton === 'c99'"
             @click="openC99Panel"
           >
-            <span class="c99-curriculum-dot" />
+            <span class="size-3 shrink-0 rounded-full bg-[linear-gradient(135deg,#bae6fd,#0284c7)]" />
             <span>C99</span>
           </button>
         </div>
@@ -704,45 +704,4 @@ function closeC99Panel() {
   box-shadow: 0 0 10px rgba(196, 181, 253, 1), 0 0 24px rgba(124, 58, 237, 1);
 }
 
-.c99-curriculum-button {
-  display: flex;
-  min-height: 4rem;
-  align-items: center;
-  gap: 0.75rem;
-  border-radius: 1rem;
-  border: 1px solid rgba(125, 211, 252, 0.65);
-  background: rgba(15, 23, 42, 0.9);
-  padding: 1rem 1.25rem;
-  color: rgb(248 250 252);
-  font-size: 0.95rem;
-  font-weight: 700;
-  text-align: left;
-  transition: border-color 150ms ease, box-shadow 150ms ease, transform 150ms ease;
-}
-
-.c99-curriculum-button:hover {
-  transform: translateY(-0.125rem);
-}
-
-.c99-curriculum-button:focus-visible {
-  outline: 2px solid rgba(255, 255, 255, 0.85);
-  outline-offset: 2px;
-}
-
-.c99-curriculum-dot {
-  width: 0.75rem;
-  height: 0.75rem;
-  flex-shrink: 0;
-  border-radius: 9999px;
-  background: linear-gradient(135deg, #bae6fd, #0284c7);
-}
-
-.c99-curriculum-button-active {
-  border-color: rgba(125, 211, 252, 0.95);
-  box-shadow: 0 0 0 1px rgba(125, 211, 252, 0.95), 0 0 14px rgba(56, 189, 248, 1), 0 0 28px rgba(14, 165, 233, 1), 0 0 52px rgba(2, 132, 199, 0.95);
-}
-
-.c99-curriculum-button-active .c99-curriculum-dot {
-  box-shadow: 0 0 10px rgba(125, 211, 252, 1), 0 0 24px rgba(2, 132, 199, 1);
-}
 </style>

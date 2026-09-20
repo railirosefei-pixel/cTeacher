@@ -1,7 +1,7 @@
 <script setup>
 /**
  * @file C99View.vue
- * @description C99 learning panel with left-aligned placeholder navigation.
+ * @description C99 learning panel with left-centered section navigation.
  */
 
 import C99LessonsView from "./C99LessonsView.vue";
@@ -51,16 +51,12 @@ function choosePage(pageId) {
 <template>
   <aside
     id="c99-view"
-    class="flex-1 rounded-2xl border border-cyan-200/40 bg-[linear-gradient(135deg,#991b1b,#ea580c,#facc15,#16a34a,#2563eb,#4f46e5,#8b5cf6)] p-4 shadow-2xl shadow-cyan-950/40"
+    class="relative flex min-h-[720px] flex-1 flex-col rounded-2xl border border-cyan-200/40 bg-[linear-gradient(135deg,#991b1b,#ea580c,#facc15,#16a34a,#2563eb,#4f46e5,#8b5cf6)] p-4 shadow-2xl shadow-cyan-950/40"
   >
     <div
       id="c99-view-header"
-      class="mb-5 flex items-center justify-between border-b border-slate-700 pb-4"
+      class="absolute left-4 top-4 z-10"
     >
-      <div>
-        <p class="text-[10px] font-semibold uppercase tracking-[0.22em] text-cyan-300">C99</p>
-        <h4 class="mt-2 text-xl font-bold text-white">Learning hub</h4>
-      </div>
       <button
         type="button"
         class="rounded-lg border border-slate-600 bg-slate-800 px-2 py-1 text-xs font-medium text-slate-200 transition hover:border-cyan-400 hover:text-white focus:outline-none focus:ring-2 focus:ring-cyan-400/70"
@@ -70,14 +66,14 @@ function choosePage(pageId) {
       </button>
     </div>
 
-    <div id="c99-view-layout" class="flex gap-4">
-      <nav id="c99-navigation" class="w-40 space-y-3">
+    <div id="c99-view-layout" class="flex min-h-0 flex-1 gap-4 pt-10">
+      <nav id="c99-navigation" class="flex w-40 flex-col justify-center gap-3">
         <button
           v-for="item in menuItems"
           :key="item.id"
           type="button"
           :class="[
-            'flex w-full items-center justify-between rounded-xl border px-3 py-3 text-left text-sm font-semibold transition focus:outline-none focus:ring-2 focus:ring-cyan-400/70',
+            'flex w-full items-center justify-start rounded-xl border px-3 py-3 text-left text-sm font-semibold transition focus:outline-none focus:ring-2 focus:ring-cyan-400/70',
             props.currentPage === item.id
               ? 'border-cyan-400/80 bg-cyan-500/10 text-cyan-100 shadow-lg shadow-cyan-950/30'
               : 'border-slate-700 bg-slate-800/80 text-slate-200 hover:border-cyan-400/60 hover:bg-slate-800',
@@ -90,7 +86,7 @@ function choosePage(pageId) {
 
       <div
         id="c99-page-panel"
-        class="flex-1 rounded-xl border border-slate-700 bg-slate-900/60 p-4"
+        class="min-h-0 flex-1 rounded-xl border border-slate-700 bg-slate-900/60 p-4"
       >
         <component :is="pageComponents[props.currentPage]" />
       </div>

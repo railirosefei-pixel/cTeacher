@@ -512,27 +512,59 @@
 
             ab. Rendered In: "C99LessonsView.vue" Line(s): 9 - 18
 
-            ac. Function: Shows the placeholder lessons overview for the C99 hub.
+            ac. Function: Shows the C99 lesson category menu or its active category panel.
+
+        b. c99-category-menu
+
+            aa. Defined In: "C99LessonsView.vue" in the categories registry
+
+            ab. Rendered In: "C99LessonsView.vue" in the inactive-category branch
+
+            ac. Function: Displays the 27 C99 lesson category buttons.
+
+        c. c99-category-panel-menu
+
+            aa. Defined In: "C99LessonsView.vue" in the active-category branch
+
+            ab. Rendered In: "C99LessonsView.vue" in the active-category branch
+
+            ac. Function: Replaces the category menu with the selected individual lesson panel.
+
+        d. c99-category-panel-01 through c99-category-panel-27
+
+            aa. Defined In: "C99LessonsView.vue" in the categories registry
+
+            ab. Rendered In: "C99LessonsView.vue" when its category ID is active
+
+            ac. Function: Provides an individual lesson workspace for each C99 category with its own panel selector.
 
     B. Buttons:
 
-        a. none
+        a. c99-category-button-01 through c99-category-button-27
 
-            aa. Defined In: "C99LessonsView.vue"
+            aa. Defined In: "C99LessonsView.vue" in the categories registry
 
-            ab. Rendered In: "C99LessonsView.vue"
+            ab. Rendered In: "C99LessonsView.vue" in the inactive-category branch
 
-            ac. Function: No interactive buttons are currently defined in this placeholder page.
+            ac. Function: Activates its matching C99 lesson category panel.
+
+        b. c99-category-close-01 through c99-category-close-27
+
+            aa. Defined In: "C99LessonsView.vue" in the categories registry
+
+            ab. Rendered In: "C99LessonsView.vue" inside each active category panel
+
+            ac. Function: Closes its individual category panel and returns to the category menu.
 
     C. Menus:
 
-        a. none
+        a. c99-category-menu
 
-            aa. Defined In: "C99LessonsView.vue"
+            aa. Defined In: "C99LessonsView.vue" in the categories registry
 
-            ab. Rendered In: "C99LessonsView.vue"
+            ab. Rendered In: "C99LessonsView.vue" in the inactive-category branch
 
-            ac. Function: No menu is currently defined in this placeholder page.
+            ac. Function: Lists all 27 C99 lesson categories for selection.
 
 7. Page: "C99ProgressView"
 
