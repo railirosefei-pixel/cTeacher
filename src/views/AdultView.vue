@@ -66,9 +66,6 @@ const scheduleButtonConfig = {
   image:
     "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512'%3E%3Crect width='512' height='512' rx='58' fill='%23f8fafc'/%3E%3Crect x='56' y='64' width='400' height='384' rx='36' fill='%23f8fafc' stroke='%23cbd5e1' stroke-width='10'/%3E%3Crect x='56' y='64' width='400' height='88' rx='36' fill='%23dbeafe'/%3E%3Cpath d='M56 136h400' stroke='%23bfdbfe' stroke-width='10'/%3E%3Cpath d='M56 172h400' stroke='%23dbeafe' stroke-width='10'/%3E%3Cpath d='M142 64v88M370 64v88' stroke='%239aa9b9' stroke-width='12' stroke-linecap='round'/%3E%3Crect x='116' y='226' width='64' height='56' rx='12' fill='%23e2e8f0'/%3E%3Crect x='204' y='226' width='64' height='56' rx='12' fill='%23e2e8f0'/%3E%3Crect x='292' y='226' width='64' height='56' rx='12' fill='%23e2e8f0'/%3E%3Crect x='116' y='310' width='64' height='56' rx='12' fill='%23e2e8f0'/%3E%3Crect x='204' y='310' width='64' height='56' rx='12' fill='%23e2e8f0'/%3E%3Crect x='292' y='310' width='64' height='56' rx='12' fill='%23e2e8f0'/%3E%3Crect x='104' y='100' width='32' height='22' rx='7' fill='%233b82f6'/%3E%3Crect x='376' y='100' width='32' height='22' rx='7' fill='%233b82f6'/%3E%3Ctext x='256' y='118' text-anchor='middle' font-size='42' font-family='Arial, sans-serif' fill='%233b82f6' font-weight='700'%3EMar%3C/text%3E%3C/svg%3E",
   label: "Schedule calendar",
-  buttonClasses:
-    "mt-2.5 ml-2.5 block size-[clamp(182px,32vw,260px)] overflow-hidden rounded-3xl p-0 transition duration-200 hover:-translate-y-0.5",
-  imageClasses: "block size-full rounded-3xl object-cover",
   action: openSchedulePanel,
 };
 
@@ -121,10 +118,7 @@ function closeC99Panel() {
       Back
     </button>
 
-    <div
-      id="adult-view-layout"
-      class="flex min-h-[620px] flex-col gap-6 pt-14 lg:flex-row"
-    >
+    <div id="adult-view-layout" class="flex min-h-[620px] flex-col gap-6 pt-14 lg:flex-row">
       <AdultMenu
         :items="adultSubMenuItems"
         :active-item="selectedAdultMenuItem"
@@ -141,12 +135,8 @@ function closeC99Panel() {
           class="flex items-center justify-between gap-4 border-b border-slate-700 pb-4"
         >
           <div id="dashboard-heading">
-            <p class="text-xs uppercase tracking-[0.2em] text-cyan-300">
-              Adult portal
-            </p>
-            <h3 class="mt-2 text-3xl font-bold text-white">
-              Learning dashboard
-            </h3>
+            <p class="text-xs uppercase tracking-[0.2em] text-cyan-300">Adult portal</p>
+            <h3 class="mt-2 text-3xl font-bold text-white">Learning dashboard</h3>
           </div>
           <span
             class="inline-flex items-center rounded-full border border-emerald-500/30 bg-emerald-500/10 px-3 py-1 text-xs font-semibold uppercase tracking-[0.18em] text-emerald-300"
@@ -155,42 +145,27 @@ function closeC99Panel() {
           </span>
         </div>
 
-        <div
-          id="dashboard-metrics"
-          class="mt-6 grid gap-4 md:grid-cols-2 xl:grid-cols-3"
-        >
+        <div id="dashboard-metrics" class="mt-6 grid gap-4 md:grid-cols-2 xl:grid-cols-3">
           <div
             id="sessions-metric"
             class="rounded-2xl border border-violet-500/20 bg-gradient-to-br from-violet-500/10 to-indigo-500/5 p-4"
           >
-            <p class="text-sm text-violet-200">
-              Sessions
-            </p>
-            <p class="mt-3 text-3xl font-bold text-white">
-              24
-            </p>
+            <p class="text-sm text-violet-200">Sessions</p>
+            <p class="mt-3 text-3xl font-bold text-white">24</p>
           </div>
           <div
             id="progress-metric"
             class="rounded-2xl border border-cyan-500/20 bg-gradient-to-br from-cyan-500/10 to-emerald-500/5 p-4"
           >
-            <p class="text-sm text-cyan-200">
-              Progress
-            </p>
-            <p class="mt-3 text-3xl font-bold text-white">
-              86%
-            </p>
+            <p class="text-sm text-cyan-200">Progress</p>
+            <p class="mt-3 text-3xl font-bold text-white">86%</p>
           </div>
           <div
             id="next-review-metric"
             class="rounded-2xl border border-amber-500/20 bg-gradient-to-br from-amber-500/10 to-orange-500/5 p-4 md:col-span-2 xl:col-span-1"
           >
-            <p class="text-sm text-amber-200">
-              Next review
-            </p>
-            <p class="mt-3 text-2xl font-bold text-white">
-              Friday
-            </p>
+            <p class="text-sm text-amber-200">Next review</p>
+            <p class="mt-3 text-2xl font-bold text-white">Friday</p>
           </div>
         </div>
       </div>
@@ -200,12 +175,8 @@ function closeC99Panel() {
         id="programs-panel"
         class="flex-1 rounded-2xl border border-teal-200/40 bg-[linear-gradient(135deg,#134e4a,#0f766e,#14b8a6,#047857,#10b981,#6ee7b7)] p-5"
       >
-        <p class="text-xs uppercase tracking-[0.2em] text-teal-100">
-          Adult portal
-        </p>
-        <h3 class="mt-2 text-3xl font-bold text-white">
-          Programs
-        </h3>
+        <p class="text-xs uppercase tracking-[0.2em] text-teal-100">Adult portal</p>
+        <h3 class="mt-2 text-3xl font-bold text-white">Programs</h3>
         <p class="mt-4 max-w-xl text-base leading-7 text-teal-50">
           Adult learning programs will appear here.
         </p>
@@ -216,12 +187,8 @@ function closeC99Panel() {
         id="global-reports-panel"
         class="flex-1 rounded-2xl border border-orange-200/40 bg-[linear-gradient(135deg,#7f1d1d,#991b1b,#b91c1c,#9a3412)] p-5"
       >
-        <p class="text-xs uppercase tracking-[0.2em] text-orange-100">
-          Adult portal
-        </p>
-        <h3 class="mt-2 text-3xl font-bold text-white">
-          Global Reports
-        </h3>
+        <p class="text-xs uppercase tracking-[0.2em] text-orange-100">Adult portal</p>
+        <h3 class="mt-2 text-3xl font-bold text-white">Global Reports</h3>
         <p class="mt-4 max-w-xl text-base leading-7 text-orange-50">
           Global learning reports will appear here.
         </p>
@@ -232,12 +199,8 @@ function closeC99Panel() {
         id="support-panel"
         class="flex-1 rounded-2xl border border-yellow-200/40 bg-[linear-gradient(135deg,#9a3412,#c2410c,#ea580c,#f59e0b,#facc15,#fef08a)] p-5"
       >
-        <p class="text-xs uppercase tracking-[0.2em] text-yellow-100">
-          Adult portal
-        </p>
-        <h3 class="mt-2 text-3xl font-bold text-white">
-          Support
-        </h3>
+        <p class="text-xs uppercase tracking-[0.2em] text-yellow-100">Adult portal</p>
+        <h3 class="mt-2 text-3xl font-bold text-white">Support</h3>
         <p class="mt-4 max-w-xl text-base leading-7 text-yellow-50">
           Adult learning support will appear here.
         </p>
@@ -254,16 +217,15 @@ function closeC99Panel() {
             type="button"
             :name="scheduleButtonConfig.id"
             :aria-label="scheduleButtonConfig.label"
-            class="schedule-calendar-button"
-            :class="scheduleButtonConfig.buttonClasses"
+            class="schedule-calendar-button mt-2.5 ml-2.5 block size-[clamp(182px,32vw,260px)] overflow-hidden rounded-3xl p-0 transition duration-200 hover:-translate-y-0.5"
             @click="scheduleButtonConfig.action"
           >
             <img
               :id="`${scheduleButtonConfig.id}-image`"
-              :class="scheduleButtonConfig.imageClasses"
+              class="block size-full rounded-3xl object-cover"
               :src="scheduleButtonConfig.image"
               :alt="scheduleButtonConfig.label"
-            >
+            />
           </button>
 
           <div class="schedule-options mt-4 flex w-full max-w-[18rem] flex-col gap-3">
@@ -331,12 +293,14 @@ function closeC99Panel() {
 
 <style scoped>
 .schedule-calendar-button {
-  border-color: rgba(125, 211, 252, 0.9);
-  background: radial-gradient(circle at top, rgba(56, 189, 248, 0.18), rgba(15, 23, 42, 0.96) 58%);
+  border-color: rgba(71, 85, 105, 0.95);
+  background:
+    radial-gradient(circle at top, rgba(96, 165, 250, 0.18), rgba(15, 23, 42, 0.98) 52%),
+    linear-gradient(180deg, rgba(15, 23, 42, 0.94), rgba(15, 23, 42, 0.9));
   box-shadow:
-    0 18px 30px rgba(2, 6, 23, 0.72),
-    inset 0 0 0 1px rgba(148, 163, 184, 0.18),
-    inset 0 0 24px rgba(59, 130, 246, 0.16);
+    0 18px 30px rgba(2, 6, 23, 0.74),
+    inset 0 0 0 1px rgba(148, 163, 184, 0.14),
+    inset 0 0 20px rgba(30, 41, 59, 0.7);
   transition:
     border-color 200ms ease,
     box-shadow 200ms ease,
@@ -344,14 +308,15 @@ function closeC99Panel() {
 }
 
 .schedule-calendar-button:hover {
-  border-color: rgba(34, 211, 238, 0.9);
+  border-color: rgba(129, 140, 248, 0.9);
   box-shadow:
-    0 20px 34px rgba(2, 6, 23, 0.8),
-    0 0 24px rgba(59, 130, 246, 0.22);
+    0 20px 34px rgba(2, 6, 23, 0.82),
+    0 0 22px rgba(99, 102, 241, 0.22),
+    inset 0 0 18px rgba(30, 41, 59, 0.8);
 }
 
 .schedule-calendar-button:focus-visible {
-  outline: 2px solid rgba(34, 211, 238, 0.6);
+  outline: 2px solid rgba(167, 139, 250, 0.7);
   outline-offset: 2px;
 }
 

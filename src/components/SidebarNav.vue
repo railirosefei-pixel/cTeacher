@@ -56,10 +56,7 @@ function select(viewId) {
     id="primary-sidebar"
     class="w-full max-w-xs rounded-3xl border border-slate-800 bg-slate-900/80 p-4 shadow-2xl shadow-slate-950/60 backdrop-blur-sm sm:p-5"
   >
-    <div
-      id="sidebar-brand"
-      class="mb-8 flex items-center gap-3 border-b border-slate-800 pb-5"
-    >
+    <div id="sidebar-brand" class="mb-8 flex items-center gap-3 border-b border-slate-800 pb-5">
       <div
         id="brand-mark"
         class="flex h-10 w-10 items-center justify-center rounded-2xl bg-gradient-to-br from-violet-500 via-indigo-500 to-cyan-400 text-lg font-bold text-white shadow-lg shadow-violet-500/30"
@@ -67,19 +64,12 @@ function select(viewId) {
         C
       </div>
       <div id="brand-copy">
-        <p class="text-xs uppercase tracking-[0.2em] text-slate-400">
-          Portal
-        </p>
-        <h1 class="text-xl font-semibold text-white">
-          cTeacher
-        </h1>
+        <p class="text-xs uppercase tracking-[0.2em] text-slate-400">Portal</p>
+        <h1 class="text-xl font-semibold text-white">cTeacher</h1>
       </div>
     </div>
 
-    <nav
-      id="primary-navigation"
-      class="flex flex-col gap-3"
-    >
+    <nav id="primary-navigation" class="flex flex-col gap-3">
       <button
         v-for="item in navItems"
         :key="item.id"
@@ -93,10 +83,7 @@ function select(viewId) {
         ]"
         @click="select(item.id)"
       >
-        <span
-          class="absolute inset-y-0 left-0 w-1.5 bg-gradient-to-b"
-          :class="item.accent"
-        />
+        <span class="absolute inset-y-0 left-0 w-1.5 bg-gradient-to-b" :class="item.accent" />
         <span class="relative flex items-center justify-between pl-3">
           <span class="text-base font-semibold text-slate-100">{{ item.label }}</span>
           <span

@@ -7,10 +7,7 @@
 </script>
 
 <template>
-  <section
-    id="home-view"
-    class="max-w-xl"
-  >
+  <section id="home-view" class="max-w-xl">
     <span
       class="inline-flex items-center rounded-full border border-violet-500/30 bg-violet-500/10 px-3 py-1 text-xs font-semibold uppercase tracking-[0.2em] text-violet-300"
     >

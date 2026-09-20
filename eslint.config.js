@@ -21,6 +21,13 @@ export default [
     rules: {
       "no-console": "off",
       "no-unused-vars": ["error", { argsIgnorePattern: "^_" }],
+      "vue/max-attributes-per-line": "off",
+      "vue/singleline-html-element-content-newline": "off",
+      "vue/html-self-closing": "off",
+      "vue/html-closing-bracket-newline": "off",
+      "vue/html-indent": "off",
+      "vue/first-attribute-linebreak": "off",
+      "vue/multiline-html-element-content-newline": "off",
     },
   },
 ];

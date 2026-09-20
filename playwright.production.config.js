@@ -7,10 +7,7 @@ export default defineConfig({
   fullyParallel: true,
   retries: 1,
   outputDir: "test-results/production",
-  reporter: [
-    ["list"],
-    ["html", { outputFolder: "playwright-report/production", open: "never" }],
-  ],
+  reporter: [["list"], ["html", { outputFolder: "playwright-report/production", open: "never" }]],
   use: {
     baseURL: productionBaseURL,
     trace: "on-first-retry",

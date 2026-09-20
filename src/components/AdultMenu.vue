@@ -95,22 +95,12 @@ function selectItem(itemId) {
     id="adult-navigation"
     class="w-full rounded-2xl border border-slate-700/80 bg-slate-900/60 p-4 lg:max-w-xs"
   >
-    <div
-      id="adult-navigation-header"
-      class="mb-5 border-b border-slate-700 pb-4"
-    >
-      <p class="text-xs font-semibold uppercase tracking-[0.22em] text-violet-300">
-        Menu
-      </p>
-      <h2 class="mt-2 text-2xl font-bold text-white">
-        Adult
-      </h2>
+    <div id="adult-navigation-header" class="mb-5 border-b border-slate-700 pb-4">
+      <p class="text-xs font-semibold uppercase tracking-[0.22em] text-violet-300">Menu</p>
+      <h2 class="mt-2 text-2xl font-bold text-white">Adult</h2>
     </div>
 
-    <div
-      id="adult-navigation-items"
-      class="space-y-3"
-    >
+    <div id="adult-navigation-items" class="space-y-3">
       <button
         v-for="item in props.items"
         :key="item.id"

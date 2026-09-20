@@ -58,12 +58,8 @@ function choosePage(pageId) {
       class="mb-5 flex items-center justify-between border-b border-slate-700 pb-4"
     >
       <div>
-        <p class="text-[10px] font-semibold uppercase tracking-[0.22em] text-cyan-300">
-          C99
-        </p>
-        <h4 class="mt-2 text-xl font-bold text-white">
-          Learning hub
-        </h4>
+        <p class="text-[10px] font-semibold uppercase tracking-[0.22em] text-cyan-300">C99</p>
+        <h4 class="mt-2 text-xl font-bold text-white">Learning hub</h4>
       </div>
       <button
         type="button"
@@ -74,14 +70,8 @@ function choosePage(pageId) {
       </button>
     </div>
 
-    <div
-      id="c99-view-layout"
-      class="flex gap-4"
-    >
-      <nav
-        id="c99-navigation"
-        class="w-40 space-y-3"
-      >
+    <div id="c99-view-layout" class="flex gap-4">
+      <nav id="c99-navigation" class="w-40 space-y-3">
         <button
           v-for="item in menuItems"
           :key="item.id"

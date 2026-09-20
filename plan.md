@@ -10,7 +10,7 @@
 
 - After each meaningful batch of authorized edits, run only the checks relevant to that batch after their safety and consent gates have passed. Record unavailable, blocked, or unauthorized checks as `not run` or `blocked`; never treat them as passes.
 
-- IMPORTANT Do not run tests, builds, scanners, installations, networked commands, or output-generating validation without explicit consent after disclosing the exact command and side effects.
+- IMPORTANT Do not run builds, scanners, installations, networked commands, or output-generating validation without explicit consent after disclosing the exact command and side effects.
 
 - IMPORTANT Follow the plan 1 step at a time
 
@@ -22,7 +22,4 @@
 
 - Whenever a new menu is created, update the text file names/cmb. Append the menu's name, where it's defined, where it's rendered, and what its function is, in the exact same format as the other menus in the same text file. If the headers and categories needed for the menu to be placed under exist then simply fill them out with the relevant information. If either the page header, the category header, or both do not exist then create it and then fill out the relevant information, while following the format seen in the rest of the text file.
 
-
-1.) I just did a several hours long overhaul of a huge part of the framework of this program.  Check everything to see that there is no duplicate code, no contradictions, no stale code, no syntax errors, no poorly written code, etc...
-
-2.) If you need to create some tests to do a thorough job then please do, and if you do, store them in the tests directory
+1.) Please proceed, but just be careful to make sure that "I reviewed the current implementation in AdultView.vue before any edits. The button is already rendered in the schedule panel, and the current styling is a bright blue/glass treatment; the main risk is a visual mismatch with the darker adult dashboard if the hover and focus states are not adjusted to match the rest of the app. No code changes have been made." is accounted for and make sure that none of the formatting of the buttons, containers, menus, panels, or functionality are changed or negatively impacted by the implementation of these edits
