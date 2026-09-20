@@ -154,15 +154,7 @@
 
             ac. Function: Stores and renders the Adult subsection options.
 
-        f. overview-panel
-
-            aa. Defined In: "AdultView.vue" Line(s): 84
-
-            ab. Rendered In: "AdultView.vue" Line(s): 84 - 112
-
-            ac. Function: Shows the purple-glow dashboard for the Adult overview screen.
-
-        g. programs-panel
+        f. programs-panel
 
             aa. Defined In: "AdultView.vue" Line(s): 113
 
@@ -202,17 +194,17 @@
 
             ac. Function: Stacks the schedule card and action list vertically.
 
+        l. curriculum-subject-buttons
+
+            aa. Defined In: "AdultView.vue" Line(s): 143
+
+            ab. Rendered In: "AdultView.vue" Line(s): 143 - 226
+
+            ac. Function: Groups the six curriculum subject buttons.
+
     B. Buttons:
 
-        a. Overview:
-
-            aa. Defined In: "AdultView.vue" Line(s): 14
-
-            ab. Rendered In: "AdultMenu.vue" Line(s): 36 - 79
-
-            ac. Function: Opens the Adult overview dashboard.
-
-        b. Programs:
+        a. Programs:
 
             aa. Defined In: "AdultView.vue" Line(s): 15
 
@@ -246,11 +238,11 @@
 
         f. C99:
 
-            aa. Defined In: "AdultView.vue" Line(s): 19
+            aa. Defined In: "AdultView.vue" Line(s): 210 - 222
 
-            ab. Rendered In: "AdultMenu.vue" Line(s): 36 - 79
+            ab. Rendered In: "AdultView.vue" inside curriculum-subject-buttons
 
-            ac. Function: Opens the C99 learning hub panel from the Adult menu.
+            ac. Function: Opens the C99 learning hub panel from the Curriculum panel.
 
         g. Back:
 
@@ -299,6 +291,54 @@
             ab. Rendered In: "AdultView.vue" Line(s): 213 - 223
 
             ac. Function: Shows the yearly schedule option inside the schedule panel.
+
+        m. C++:
+
+            aa. Defined In: "AdultView.vue" Line(s): 145 - 157
+
+            ab. Rendered In: "AdultView.vue" inside curriculum-subject-buttons
+
+            ac. Function: Selects the C++ curriculum subject and activates its glow.
+
+        n. Python:
+
+            aa. Defined In: "AdultView.vue" Line(s): 159 - 171
+
+            ab. Rendered In: "AdultView.vue" inside curriculum-subject-buttons
+
+            ac. Function: Selects the Python curriculum subject and activates its glow.
+
+        o. Web-Based:
+
+            aa. Defined In: "AdultView.vue" Line(s): 173 - 185
+
+            ab. Rendered In: "AdultView.vue" inside curriculum-subject-buttons
+
+            ac. Function: Selects the Web-Based curriculum subject and activates its glow.
+
+        p. Computer Science:
+
+            aa. Defined In: "AdultView.vue" Line(s): 187 - 199
+
+            ab. Rendered In: "AdultView.vue" inside curriculum-subject-buttons
+
+            ac. Function: Selects the Computer Science curriculum subject and activates its glow.
+
+        q. Hardware:
+
+            aa. Defined In: "AdultView.vue" Line(s): 201 - 213
+
+            ab. Rendered In: "AdultView.vue" inside curriculum-subject-buttons
+
+            ac. Function: Selects the Hardware curriculum subject and activates its glow.
+
+        r. Embedded Hardware:
+
+            aa. Defined In: "AdultView.vue" Line(s): 215 - 227
+
+            ab. Rendered In: "AdultView.vue" inside curriculum-subject-buttons
+
+            ac. Function: Selects the Embedded Hardware curriculum subject and activates its glow.
 
     C. Menus:
 
@@ -384,7 +424,7 @@
 
             ab. Rendered In: "C99View.vue" Line(s): 31 - 62
 
-            ac. Function: Displays the floating C99 panel with a left-aligned navigation menu.
+            ac. Function: Displays the Curriculum-linked C99 panel with a left-aligned navigation menu.
 
         b. c99-view-layout
 
@@ -418,7 +458,7 @@
 
             ab. Rendered In: "C99View.vue" Line(s): 36 - 41
 
-            ac. Function: Closes the floating C99 panel and returns to the Adult overview screen.
+            ac. Function: Closes the C99 panel and returns to the active adult section.
 
         b. Lessons:
 

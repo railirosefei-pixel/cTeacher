@@ -1,7 +1,7 @@
 <script setup>
 /**
  * @file C99View.vue
- * @description Floating C99 portal panel with left-aligned placeholder navigation.
+ * @description C99 learning panel with left-aligned placeholder navigation.
  */
 
 import C99LessonsView from "./C99LessonsView.vue";

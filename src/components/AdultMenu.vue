@@ -27,16 +27,14 @@ const props = defineProps({
   },
   activeItem: {
     type: String,
-    default: "overview",
+    default: "curriculum",
   },
 });
 
 const emit = defineEmits(["select"]);
 
 const adultNavigationDotGlowClasses = {
-  overviewDotGlow:
-    "shadow-[0_0_0_2px_rgba(167,139,250,0.95),0_0_18px_rgba(167,139,250,1),0_0_36px_rgba(129,140,248,1),0_0_52px_rgba(99,102,241,1),0_0_80px_rgba(79,70,229,0.95)]",
-  programsDotGlow:
+  curriculumDotGlow:
     "shadow-[0_0_0_2px_rgba(94,234,212,0.95),0_0_18px_rgba(34,211,238,1),0_0_36px_rgba(52,211,153,1),0_0_52px_rgba(16,185,129,1),0_0_80px_rgba(5,150,105,0.95)]",
   reportsDotGlow:
     "shadow-[0_0_0_2px_rgba(232,121,249,0.95),0_0_18px_rgba(232,121,249,1),0_0_36px_rgba(192,132,252,1),0_0_52px_rgba(168,85,247,1),0_0_80px_rgba(147,51,234,0.95)]",
@@ -44,23 +42,17 @@ const adultNavigationDotGlowClasses = {
     "shadow-[0_0_0_2px_rgba(252,211,77,0.95),0_0_18px_rgba(251,191,36,1),0_0_36px_rgba(251,146,60,1),0_0_52px_rgba(249,115,22,1),0_0_80px_rgba(234,88,12,0.95)]",
   scheduleDotGlow:
     "shadow-[0_0_0_2px_rgba(22,101,52,0.98),0_0_18px_rgba(21,128,61,1),0_0_36px_rgba(16,185,129,1),0_0_52px_rgba(6,95,70,1),0_0_80px_rgba(5,150,105,0.95)]",
-  c99DotGlow:
-    "shadow-[0_0_0_2px_rgba(125,211,252,0.95),0_0_18px_rgba(56,189,248,1),0_0_36px_rgba(34,211,238,1),0_0_52px_rgba(14,165,233,1),0_0_80px_rgba(2,132,199,0.95)]",
 };
 
 const adultNavigationDotGlowMap = {
-  overview: "overviewDotGlow",
-  programs: "programsDotGlow",
+  curriculum: "curriculumDotGlow",
   reports: "reportsDotGlow",
   support: "supportDotGlow",
   schedule: "scheduleDotGlow",
-  c99: "c99DotGlow",
 };
 
 const adultNavigationButtonGlowClasses = {
-  overviewButtonGlow:
-    "shadow-[0_0_0_1px_rgba(167,139,250,0.9),0_0_14px_rgba(167,139,250,1),0_0_26px_rgba(129,140,248,1),0_0_44px_rgba(99,102,241,1),0_0_70px_rgba(79,70,229,0.95)] border-violet-300/90 bg-slate-800/95",
-  programsButtonGlow:
+  curriculumButtonGlow:
     "shadow-[0_0_0_1px_rgba(94,234,212,0.9),0_0_14px_rgba(34,211,238,1),0_0_26px_rgba(52,211,153,1),0_0_44px_rgba(16,185,129,1),0_0_70px_rgba(5,150,105,0.95)] border-emerald-300/90 bg-slate-800/95",
   reportsButtonGlow:
     "shadow-[0_0_0_1px_rgba(232,121,249,0.9),0_0_14px_rgba(232,121,249,1),0_0_26px_rgba(192,132,252,1),0_0_44px_rgba(168,85,247,1),0_0_70px_rgba(147,51,234,0.95)] border-fuchsia-300/90 bg-slate-800/95",
@@ -68,17 +60,13 @@ const adultNavigationButtonGlowClasses = {
     "shadow-[0_0_0_1px_rgba(252,211,77,0.9),0_0_14px_rgba(251,191,36,1),0_0_26px_rgba(251,146,60,1),0_0_44px_rgba(249,115,22,1),0_0_70px_rgba(234,88,12,0.95)] border-amber-300/90 bg-slate-800/95",
   scheduleButtonGlow:
     "shadow-[0_0_0_1px_rgba(22,101,52,0.9),0_0_14px_rgba(21,128,61,1),0_0_26px_rgba(16,185,129,1),0_0_44px_rgba(6,95,70,1),0_0_70px_rgba(5,150,105,0.95)] border-green-400/90 bg-slate-800/95",
-  c99ButtonGlow:
-    "shadow-[0_0_0_1px_rgba(125,211,252,0.9),0_0_14px_rgba(56,189,248,1),0_0_26px_rgba(34,211,238,1),0_0_44px_rgba(14,165,233,1),0_0_70px_rgba(2,132,199,0.95)] border-sky-300/90 bg-slate-800/95",
 };
 
 const adultNavigationButtonGlowMap = {
-  overview: "overviewButtonGlow",
-  programs: "programsButtonGlow",
+  curriculum: "curriculumButtonGlow",
   reports: "reportsButtonGlow",
   support: "supportButtonGlow",
   schedule: "scheduleButtonGlow",
-  c99: "c99ButtonGlow",
 };
 
 /**

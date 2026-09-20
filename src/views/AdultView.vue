@@ -2,7 +2,7 @@
 /**
  * @file AdultView.vue
  * @description Adult portal view content. Composes AdultMenu with the learning
- * dashboard panel and opens the C99 side-panel when selected.
+ * dashboard panel and opens the C99 learning panel when selected.
  */
 
 import { ref } from "vue";
@@ -14,14 +14,8 @@ const emit = defineEmits(["back"]);
 /** Adult sub-menu items rendered by AdultMenu. */
 const adultSubMenuItems = [
   {
-    id: "overview",
-    label: "Overview",
-    accent: "from-violet-500/20 to-indigo-500/10",
-    badge: "Primary",
-  },
-  {
-    id: "programs",
-    label: "Programs",
+    id: "curriculum",
+    label: "Curriculum",
     accent: "from-cyan-500/20 to-emerald-500/10",
     badge: "Next",
   },
@@ -43,17 +37,12 @@ const adultSubMenuItems = [
     accent: "from-emerald-600/40 to-green-700/20",
     badge: "Plan",
   },
-  {
-    id: "c99",
-    label: "C99",
-    accent: "from-sky-500/20 to-cyan-500/10",
-    badge: "New",
-  },
 ];
 
 const isC99ViewOpen = ref(false);
 const currentC99Page = ref("lessons");
-const selectedAdultMenuItem = ref("overview");
+const selectedAdultMenuItem = ref("curriculum");
+const selectedCurriculumButton = ref("");
 const selectedScheduleOption = ref("");
 
 /** Keep the Schedule panel active when its calendar control is selected. */
@@ -65,6 +54,18 @@ function openSchedulePanel() {
 /** Change the active schedule button state without applying a global glow style. */
 function selectScheduleOption(optionId) {
   selectedScheduleOption.value = optionId;
+}
+
+/** Track the selected curriculum subject for its individual button glow. */
+function selectCurriculumButton(buttonId) {
+  selectedCurriculumButton.value = buttonId;
+}
+
+/** Open the C99 learning panel from its curriculum button. */
+function openC99Panel() {
+  selectedCurriculumButton.value = "c99";
+  selectedAdultMenuItem.value = "c99";
+  isC99ViewOpen.value = true;
 }
 
 const scheduleButtonConfig = {
@@ -86,12 +87,6 @@ function goBack() {
  */
 function handleMenuSelection(itemId) {
   selectedAdultMenuItem.value = itemId;
-
-  if (itemId === "c99") {
-    isC99ViewOpen.value = true;
-    return;
-  }
-
   isC99ViewOpen.value = false;
 }
 
@@ -104,10 +99,11 @@ function selectC99Page(pageId) {
   isC99ViewOpen.value = true;
 }
 
-/** Close the C99 panel and return to the overview placeholder. */
+/** Close the C99 panel and return to the active adult section. */
 function closeC99Panel() {
   isC99ViewOpen.value = false;
-  selectedAdultMenuItem.value = "overview";
+  selectedAdultMenuItem.value = "curriculum";
+  selectedCurriculumButton.value = "";
 }
 </script>
 
@@ -132,60 +128,103 @@ function closeC99Panel() {
       />
 
       <div
-        v-if="selectedAdultMenuItem === 'overview'"
-        id="overview-panel"
-        class="flex-1 rounded-2xl border border-violet-300/40 bg-[linear-gradient(135deg,#2e1065,#4c1d95,#6d28d9,#7c3aed,#8b5cf6,#c4b5fd)] p-5"
-      >
-        <div
-          id="dashboard-header"
-          class="flex items-center justify-between gap-4 border-b border-slate-700 pb-4"
-        >
-          <div id="dashboard-heading">
-            <p class="text-xs uppercase tracking-[0.2em] text-cyan-300">Adult portal</p>
-            <h3 class="mt-2 text-3xl font-bold text-white">Learning dashboard</h3>
-          </div>
-          <span
-            class="inline-flex items-center rounded-full border border-emerald-500/30 bg-emerald-500/10 px-3 py-1 text-xs font-semibold uppercase tracking-[0.18em] text-emerald-300"
-          >
-            Active
-          </span>
-        </div>
-
-        <div id="dashboard-metrics" class="mt-6 grid gap-4 md:grid-cols-2 xl:grid-cols-3">
-          <div
-            id="sessions-metric"
-            class="rounded-2xl border border-violet-500/20 bg-gradient-to-br from-violet-500/10 to-indigo-500/5 p-4"
-          >
-            <p class="text-sm text-violet-200">Sessions</p>
-            <p class="mt-3 text-3xl font-bold text-white">24</p>
-          </div>
-          <div
-            id="progress-metric"
-            class="rounded-2xl border border-cyan-500/20 bg-gradient-to-br from-cyan-500/10 to-emerald-500/5 p-4"
-          >
-            <p class="text-sm text-cyan-200">Progress</p>
-            <p class="mt-3 text-3xl font-bold text-white">86%</p>
-          </div>
-          <div
-            id="next-review-metric"
-            class="rounded-2xl border border-amber-500/20 bg-gradient-to-br from-amber-500/10 to-orange-500/5 p-4 md:col-span-2 xl:col-span-1"
-          >
-            <p class="text-sm text-amber-200">Next review</p>
-            <p class="mt-3 text-2xl font-bold text-white">Friday</p>
-          </div>
-        </div>
-      </div>
-
-      <div
-        v-else-if="selectedAdultMenuItem === 'programs'"
-        id="programs-panel"
+        v-if="selectedAdultMenuItem === 'curriculum'"
+        id="curriculum-panel"
         class="flex-1 rounded-2xl border border-teal-200/40 bg-[linear-gradient(135deg,#134e4a,#0f766e,#14b8a6,#047857,#10b981,#6ee7b7)] p-5"
       >
-        <p class="text-xs uppercase tracking-[0.2em] text-teal-100">Adult portal</p>
-        <h3 class="mt-2 text-3xl font-bold text-white">Programs</h3>
-        <p class="mt-4 max-w-xl text-base leading-7 text-teal-50">
-          Adult learning programs will appear here.
-        </p>
+        <h3 class="text-3xl font-bold text-white">Curriculum</h3>
+        <div id="curriculum-subject-buttons" class="mt-6 grid gap-4 sm:grid-cols-2 xl:grid-cols-3">
+          <button
+            id="cpp-curriculum-button"
+            type="button"
+            name="cpp-curriculum-button"
+            class="cpp-curriculum-button"
+            :class="selectedCurriculumButton === 'cpp' ? 'cpp-curriculum-button-active' : ''"
+            :aria-pressed="selectedCurriculumButton === 'cpp'"
+            @click="selectCurriculumButton('cpp')"
+          >
+            <span class="cpp-curriculum-dot" />
+            <span>C++</span>
+          </button>
+
+          <button
+            id="python-curriculum-button"
+            type="button"
+            name="python-curriculum-button"
+            class="python-curriculum-button"
+            :class="selectedCurriculumButton === 'python' ? 'python-curriculum-button-active' : ''"
+            :aria-pressed="selectedCurriculumButton === 'python'"
+            @click="selectCurriculumButton('python')"
+          >
+            <span class="python-curriculum-dot" />
+            <span>Python</span>
+          </button>
+
+          <button
+            id="web-based-curriculum-button"
+            type="button"
+            name="web-based-curriculum-button"
+            class="web-based-curriculum-button"
+            :class="selectedCurriculumButton === 'web-based' ? 'web-based-curriculum-button-active' : ''"
+            :aria-pressed="selectedCurriculumButton === 'web-based'"
+            @click="selectCurriculumButton('web-based')"
+          >
+            <span class="web-based-curriculum-dot" />
+            <span>Web-Based</span>
+          </button>
+
+          <button
+            id="computer-science-curriculum-button"
+            type="button"
+            name="computer-science-curriculum-button"
+            class="computer-science-curriculum-button"
+            :class="selectedCurriculumButton === 'computer-science' ? 'computer-science-curriculum-button-active' : ''"
+            :aria-pressed="selectedCurriculumButton === 'computer-science'"
+            @click="selectCurriculumButton('computer-science')"
+          >
+            <span class="computer-science-curriculum-dot" />
+            <span>Computer Science</span>
+          </button>
+
+          <button
+            id="hardware-curriculum-button"
+            type="button"
+            name="hardware-curriculum-button"
+            class="hardware-curriculum-button"
+            :class="selectedCurriculumButton === 'hardware' ? 'hardware-curriculum-button-active' : ''"
+            :aria-pressed="selectedCurriculumButton === 'hardware'"
+            @click="selectCurriculumButton('hardware')"
+          >
+            <span class="hardware-curriculum-dot" />
+            <span>Hardware</span>
+          </button>
+
+          <button
+            id="embedded-hardware-curriculum-button"
+            type="button"
+            name="embedded-hardware-curriculum-button"
+            class="embedded-hardware-curriculum-button"
+            :class="selectedCurriculumButton === 'embedded-hardware' ? 'embedded-hardware-curriculum-button-active' : ''"
+            :aria-pressed="selectedCurriculumButton === 'embedded-hardware'"
+            @click="selectCurriculumButton('embedded-hardware')"
+          >
+            <span class="embedded-hardware-curriculum-dot" />
+            <span>Embedded Hardware</span>
+          </button>
+
+          <button
+            id="c99-curriculum-button"
+            type="button"
+            name="c99-curriculum-button"
+            class="c99-curriculum-button"
+            :class="selectedCurriculumButton === 'c99' ? 'c99-curriculum-button-active' : ''"
+            :aria-pressed="selectedCurriculumButton === 'c99'"
+            @click="openC99Panel"
+          >
+            <span class="c99-curriculum-dot" />
+            <span>C99</span>
+          </button>
+        </div>
       </div>
 
       <div
@@ -509,5 +548,201 @@ function closeC99Panel() {
   box-shadow:
     0 0 10px rgba(251, 191, 36, 1),
     0 0 14px rgba(249, 115, 22, 1);
+}
+
+.cpp-curriculum-button,
+.python-curriculum-button,
+.web-based-curriculum-button,
+.computer-science-curriculum-button,
+.hardware-curriculum-button,
+.embedded-hardware-curriculum-button {
+  display: flex;
+  min-height: 4rem;
+  align-items: center;
+  gap: 0.75rem;
+  border-radius: 1rem;
+  border: 1px solid rgba(226, 232, 240, 0.65);
+  background: rgba(15, 23, 42, 0.9);
+  padding: 1rem 1.25rem;
+  color: rgb(248 250 252);
+  font-size: 0.95rem;
+  font-weight: 700;
+  text-align: left;
+  transition: border-color 150ms ease, box-shadow 150ms ease, transform 150ms ease;
+}
+
+.cpp-curriculum-button:hover,
+.python-curriculum-button:hover,
+.web-based-curriculum-button:hover,
+.computer-science-curriculum-button:hover,
+.hardware-curriculum-button:hover,
+.embedded-hardware-curriculum-button:hover {
+  transform: translateY(-0.125rem);
+}
+
+.cpp-curriculum-button:focus-visible,
+.python-curriculum-button:focus-visible,
+.web-based-curriculum-button:focus-visible,
+.computer-science-curriculum-button:focus-visible,
+.hardware-curriculum-button:focus-visible,
+.embedded-hardware-curriculum-button:focus-visible {
+  outline: 2px solid rgba(255, 255, 255, 0.85);
+  outline-offset: 2px;
+}
+
+.cpp-curriculum-dot,
+.python-curriculum-dot,
+.web-based-curriculum-dot,
+.computer-science-curriculum-dot,
+.hardware-curriculum-dot,
+.embedded-hardware-curriculum-dot {
+  width: 0.75rem;
+  height: 0.75rem;
+  flex-shrink: 0;
+  border-radius: 9999px;
+}
+
+.cpp-curriculum-button {
+  border-color: rgba(125, 211, 252, 0.65);
+}
+
+.cpp-curriculum-dot {
+  background: linear-gradient(135deg, #f0abfc, #c026d3);
+}
+
+.cpp-curriculum-button-active {
+  border-color: rgba(240, 171, 252, 0.95);
+  box-shadow: 0 0 0 1px rgba(240, 171, 252, 0.95), 0 0 14px rgba(217, 70, 239, 1), 0 0 28px rgba(192, 38, 211, 1), 0 0 52px rgba(162, 28, 175, 0.95);
+}
+
+.cpp-curriculum-button-active .cpp-curriculum-dot {
+  box-shadow: 0 0 10px rgba(240, 171, 252, 1), 0 0 24px rgba(192, 38, 211, 1);
+}
+
+.python-curriculum-button {
+  border-color: rgba(253, 224, 71, 0.65);
+}
+
+.python-curriculum-dot {
+  background: linear-gradient(135deg, #fde68a, #f97316);
+}
+
+.python-curriculum-button-active {
+  border-color: rgba(253, 224, 71, 0.95);
+  box-shadow: 0 0 0 1px rgba(253, 224, 71, 0.95), 0 0 14px rgba(250, 204, 21, 1), 0 0 28px rgba(245, 158, 11, 1), 0 0 52px rgba(234, 88, 12, 0.95);
+}
+
+.python-curriculum-button-active .python-curriculum-dot {
+  box-shadow: 0 0 10px rgba(253, 224, 71, 1), 0 0 24px rgba(234, 88, 12, 1);
+}
+
+.web-based-curriculum-button {
+  border-color: rgba(134, 239, 172, 0.65);
+}
+
+.web-based-curriculum-dot {
+  background: linear-gradient(135deg, #a7f3d0, #059669);
+}
+
+.web-based-curriculum-button-active {
+  border-color: rgba(134, 239, 172, 0.95);
+  box-shadow: 0 0 0 1px rgba(134, 239, 172, 0.95), 0 0 14px rgba(52, 211, 153, 1), 0 0 28px rgba(16, 185, 129, 1), 0 0 52px rgba(5, 150, 105, 0.95);
+}
+
+.web-based-curriculum-button-active .web-based-curriculum-dot {
+  box-shadow: 0 0 10px rgba(110, 231, 183, 1), 0 0 24px rgba(5, 150, 105, 1);
+}
+
+.computer-science-curriculum-button {
+  border-color: rgba(147, 197, 253, 0.65);
+}
+
+.computer-science-curriculum-dot {
+  background: linear-gradient(135deg, #bfdbfe, #2563eb);
+}
+
+.computer-science-curriculum-button-active {
+  border-color: rgba(147, 197, 253, 0.95);
+  box-shadow: 0 0 0 1px rgba(147, 197, 253, 0.95), 0 0 14px rgba(96, 165, 250, 1), 0 0 28px rgba(37, 99, 235, 1), 0 0 52px rgba(30, 64, 175, 0.95);
+}
+
+.computer-science-curriculum-button-active .computer-science-curriculum-dot {
+  box-shadow: 0 0 10px rgba(147, 197, 253, 1), 0 0 24px rgba(37, 99, 235, 1);
+}
+
+.hardware-curriculum-button {
+  border-color: rgba(253, 186, 116, 0.65);
+}
+
+.hardware-curriculum-dot {
+  background: linear-gradient(135deg, #fed7aa, #dc2626);
+}
+
+.hardware-curriculum-button-active {
+  border-color: rgba(253, 186, 116, 0.95);
+  box-shadow: 0 0 0 1px rgba(253, 186, 116, 0.95), 0 0 14px rgba(251, 146, 60, 1), 0 0 28px rgba(220, 38, 38, 1), 0 0 52px rgba(153, 27, 27, 0.95);
+}
+
+.hardware-curriculum-button-active .hardware-curriculum-dot {
+  box-shadow: 0 0 10px rgba(253, 186, 116, 1), 0 0 24px rgba(220, 38, 38, 1);
+}
+
+.embedded-hardware-curriculum-button {
+  border-color: rgba(196, 181, 253, 0.65);
+}
+
+.embedded-hardware-curriculum-dot {
+  background: linear-gradient(135deg, #ddd6fe, #7c3aed);
+}
+
+.embedded-hardware-curriculum-button-active {
+  border-color: rgba(196, 181, 253, 0.95);
+  box-shadow: 0 0 0 1px rgba(196, 181, 253, 0.95), 0 0 14px rgba(167, 139, 250, 1), 0 0 28px rgba(124, 58, 237, 1), 0 0 52px rgba(91, 33, 182, 0.95);
+}
+
+.embedded-hardware-curriculum-button-active .embedded-hardware-curriculum-dot {
+  box-shadow: 0 0 10px rgba(196, 181, 253, 1), 0 0 24px rgba(124, 58, 237, 1);
+}
+
+.c99-curriculum-button {
+  display: flex;
+  min-height: 4rem;
+  align-items: center;
+  gap: 0.75rem;
+  border-radius: 1rem;
+  border: 1px solid rgba(125, 211, 252, 0.65);
+  background: rgba(15, 23, 42, 0.9);
+  padding: 1rem 1.25rem;
+  color: rgb(248 250 252);
+  font-size: 0.95rem;
+  font-weight: 700;
+  text-align: left;
+  transition: border-color 150ms ease, box-shadow 150ms ease, transform 150ms ease;
+}
+
+.c99-curriculum-button:hover {
+  transform: translateY(-0.125rem);
+}
+
+.c99-curriculum-button:focus-visible {
+  outline: 2px solid rgba(255, 255, 255, 0.85);
+  outline-offset: 2px;
+}
+
+.c99-curriculum-dot {
+  width: 0.75rem;
+  height: 0.75rem;
+  flex-shrink: 0;
+  border-radius: 9999px;
+  background: linear-gradient(135deg, #bae6fd, #0284c7);
+}
+
+.c99-curriculum-button-active {
+  border-color: rgba(125, 211, 252, 0.95);
+  box-shadow: 0 0 0 1px rgba(125, 211, 252, 0.95), 0 0 14px rgba(56, 189, 248, 1), 0 0 28px rgba(14, 165, 233, 1), 0 0 52px rgba(2, 132, 199, 0.95);
+}
+
+.c99-curriculum-button-active .c99-curriculum-dot {
+  box-shadow: 0 0 10px rgba(125, 211, 252, 1), 0 0 24px rgba(2, 132, 199, 1);
 }
 </style>

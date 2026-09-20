@@ -1,1 +1,51 @@
 @import "tailwindcss";
+@import url("https://use.typekit.net/vaq7nuy.css");
+
+.font-antiquarian-scribe {
+  font-family: "antiquarian-scribe", serif;
+}
+
+.font-cc-stormtrooper-body {
+  font-family: "cc-stormtrooper-body", sans-serif;
+}
+
+.font-cc-stormtrooper-blaster {
+  font-family: "cc-stormtrooper-blaster", sans-serif;
+}
+
+.font-cc-stormtrooper-armor {
+  font-family: "cc-stormtrooper-armor", sans-serif;
+}
+
+.font-socko {
+  font-family: "socko", sans-serif;
+}
+
+.font-katha-latin {
+  font-family: "katha-latin", sans-serif;
+}
+
+.font-katha-latin-regular {
+  font-family: "katha-latin", sans-serif;
+  font-weight: 400;
+}
+
+.font-katha-latin-medium {
+  font-family: "katha-latin", sans-serif;
+  font-weight: 500;
+}
+
+.font-katha-latin-semibold {
+  font-family: "katha-latin", sans-serif;
+  font-weight: 600;
+}
+
+.font-katha-latin-bold {
+  font-family: "katha-latin", sans-serif;
+  font-weight: 700;
+}
+
+.font-katha-latin-extrabold {
+  font-family: "katha-latin", sans-serif;
+  font-weight: 800;
+}
